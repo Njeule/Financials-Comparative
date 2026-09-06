@@ -1,0 +1,3047 @@
+{
+  "generatedAt": "2026-09-06T23:19:16.653Z",
+  "privacy": {
+    "mode": "summarized",
+    "grain": "month-account-type",
+    "rawCsvFilesRequiredOnline": false,
+    "notes": [
+      "Raw transaction IDs are replaced with synthetic summary IDs.",
+      "Original transaction descriptions are not published.",
+      "Ledger lines are summarized by month, account, and debit/credit type."
+    ]
+  },
+  "controls": {
+    "sourceAccounts": 252,
+    "activeAccounts": 12,
+    "inactiveAccounts": 240,
+    "sourceLines": 2000,
+    "publishedLines": 286,
+    "totalTransactions": 1000,
+    "balancedTransactions": 1000,
+    "sourceDebits": 8481723.78,
+    "sourceCredits": 8481723.78,
+    "sourceLedgerTotal": 0,
+    "firstDate": "2025-01-01",
+    "lastDate": "2026-12-31"
+  },
+  "accounts": [
+    {
+      "accountKey": "1010-GEN",
+      "accountNumber": "101000",
+      "accountName": "Petty Cash",
+      "category": "Assets",
+      "subcategory": "Current Assets",
+      "detailGroup": "Cash & Cash Equivalents",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Debit",
+      "cashFlowSection": "Cash",
+      "cashFlowLine": "Cash accounts"
+    },
+    {
+      "accountKey": "1020-US",
+      "accountNumber": "102001",
+      "accountName": "Operating Bank Account - USD (United States)",
+      "category": "Assets",
+      "subcategory": "Current Assets",
+      "detailGroup": "Cash & Cash Equivalents",
+      "region": "United States",
+      "department": "Finance & Legal",
+      "normalBalance": "Debit",
+      "cashFlowSection": "Cash",
+      "cashFlowLine": "Cash accounts"
+    },
+    {
+      "accountKey": "1100-GEN",
+      "accountNumber": "110000",
+      "accountName": "Accounts Receivable - Trade",
+      "category": "Assets",
+      "subcategory": "Current Assets",
+      "detailGroup": "Receivables",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Debit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Working capital movement"
+    },
+    {
+      "accountKey": "2010-GEN",
+      "accountNumber": "201000",
+      "accountName": "Accounts Payable - Trade",
+      "category": "Liabilities",
+      "subcategory": "Current Liabilities",
+      "detailGroup": "Payables",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Credit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Working capital movement"
+    },
+    {
+      "accountKey": "2100-GEN",
+      "accountNumber": "210000",
+      "accountName": "Salaries and Wages Payable",
+      "category": "Liabilities",
+      "subcategory": "Current Liabilities",
+      "detailGroup": "Payroll Liabilities",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Credit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Payroll and people costs"
+    },
+    {
+      "accountKey": "3010-GEN",
+      "accountNumber": "301000",
+      "accountName": "Common Stock",
+      "category": "Equity",
+      "subcategory": "Shareholders Equity",
+      "detailGroup": "Paid-in Capital",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Credit",
+      "cashFlowSection": "Financing",
+      "cashFlowLine": "Equity financing"
+    },
+    {
+      "accountKey": "3900-GEN",
+      "accountNumber": "390000",
+      "accountName": "Other Comprehensive Income",
+      "category": "Equity",
+      "subcategory": "Shareholders Equity",
+      "detailGroup": "Other Equity",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Credit",
+      "cashFlowSection": "Financing",
+      "cashFlowLine": "Equity financing"
+    },
+    {
+      "accountKey": "4010-ENT",
+      "accountNumber": "401000",
+      "accountName": "Product Sales - North America - Enterprise Software",
+      "category": "Revenue",
+      "subcategory": "Operating Revenue",
+      "detailGroup": "Product Revenue",
+      "region": "Segmented",
+      "department": "Sales",
+      "normalBalance": "Credit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Customer receipts and revenue activity"
+    },
+    {
+      "accountKey": "4020-ENT",
+      "accountNumber": "402000",
+      "accountName": "Product Sales - Europe - Enterprise Software",
+      "category": "Revenue",
+      "subcategory": "Operating Revenue",
+      "detailGroup": "Product Revenue",
+      "region": "Segmented",
+      "department": "Sales",
+      "normalBalance": "Credit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Customer receipts and revenue activity"
+    },
+    {
+      "accountKey": "5010-GEN",
+      "accountNumber": "501000",
+      "accountName": "COGS - Raw Material Costs",
+      "category": "Expenses",
+      "subcategory": "Cost of Goods Sold",
+      "detailGroup": "Direct Material Costs",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Debit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Operating supplier payments"
+    },
+    {
+      "accountKey": "6010-10",
+      "accountNumber": "601010",
+      "accountName": "Salaries - Sales & Marketing Team - Corporate/HQ",
+      "category": "Expenses",
+      "subcategory": "Operating Expenses",
+      "detailGroup": "Personnel Expenses",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Debit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Payroll and people costs"
+    },
+    {
+      "accountKey": "6100-GEN",
+      "accountNumber": "610000",
+      "accountName": "General Facilities & Overhead",
+      "category": "Expenses",
+      "subcategory": "Operating Expenses",
+      "detailGroup": "Facilities & Overhead",
+      "region": "Global",
+      "department": "Corporate/HQ",
+      "normalBalance": "Debit",
+      "cashFlowSection": "Operating",
+      "cashFlowLine": "Operating supplier payments"
+    }
+  ],
+  "ledger": [
+    {
+      "transactionId": "SUM-0001",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 53807.83,
+      "description": "January 2025 summarized debits for Petty Cash (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0002",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 89423.2,
+      "description": "January 2025 summarized debits for Operating Bank Account - USD (United States) (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0003",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 30910.42,
+      "description": "January 2025 summarized debits for Accounts Receivable - Trade (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0004",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -51009,
+      "description": "January 2025 summarized credits for Accounts Payable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0005",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -41842.98,
+      "description": "January 2025 summarized credits for Salaries and Wages Payable (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0006",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -118430.93,
+      "description": "January 2025 summarized credits for Common Stock (12 transactions)",
+      "sourceLineCount": 12
+    },
+    {
+      "transactionId": "SUM-0007",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -12393.34,
+      "description": "January 2025 summarized credits for Other Comprehensive Income (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0008",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -56289.55,
+      "description": "January 2025 summarized credits for Product Sales - North America - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0009",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -33127.88,
+      "description": "January 2025 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0010",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 36053.61,
+      "description": "January 2025 summarized debits for COGS - Raw Material Costs (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0011",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 68633.74,
+      "description": "January 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0012",
+      "dateLabel": "01/01/2025",
+      "month": "2025-01",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 34264.88,
+      "description": "January 2025 summarized debits for General Facilities & Overhead (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0013",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 46861.91,
+      "description": "February 2025 summarized debits for Petty Cash (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0014",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 26089,
+      "description": "February 2025 summarized debits for Operating Bank Account - USD (United States) (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0015",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 88304.13,
+      "description": "February 2025 summarized debits for Accounts Receivable - Trade (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0016",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -64154.31,
+      "description": "February 2025 summarized credits for Accounts Payable - Trade (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0017",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -22369.72,
+      "description": "February 2025 summarized credits for Salaries and Wages Payable (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0018",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -49444.64,
+      "description": "February 2025 summarized credits for Common Stock (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0019",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -21108.87,
+      "description": "February 2025 summarized credits for Other Comprehensive Income (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0020",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -42815.76,
+      "description": "February 2025 summarized credits for Product Sales - North America - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0021",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -64851.83,
+      "description": "February 2025 summarized credits for Product Sales - Europe - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0022",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 46955.92,
+      "description": "February 2025 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0023",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 16490.62,
+      "description": "February 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0024",
+      "dateLabel": "01/02/2025",
+      "month": "2025-02",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 40043.55,
+      "description": "February 2025 summarized debits for General Facilities & Overhead (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0025",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 48655.43,
+      "description": "March 2025 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0026",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 51990.38,
+      "description": "March 2025 summarized debits for Operating Bank Account - USD (United States) (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0027",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 50284.47,
+      "description": "March 2025 summarized debits for Accounts Receivable - Trade (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0028",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -91981.23,
+      "description": "March 2025 summarized credits for Accounts Payable - Trade (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0029",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -24190.96,
+      "description": "March 2025 summarized credits for Salaries and Wages Payable (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0030",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -11256.9,
+      "description": "March 2025 summarized credits for Common Stock (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0031",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -88071.9,
+      "description": "March 2025 summarized credits for Other Comprehensive Income (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0032",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -97270.51,
+      "description": "March 2025 summarized credits for Product Sales - North America - Enterprise Software (13 transactions)",
+      "sourceLineCount": 13
+    },
+    {
+      "transactionId": "SUM-0033",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -49959.48,
+      "description": "March 2025 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0034",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 65382.68,
+      "description": "March 2025 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0035",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 60394.72,
+      "description": "March 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0036",
+      "dateLabel": "01/03/2025",
+      "month": "2025-03",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 86023.3,
+      "description": "March 2025 summarized debits for General Facilities & Overhead (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0037",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 30436.72,
+      "description": "April 2025 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0038",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 6479.55,
+      "description": "April 2025 summarized debits for Operating Bank Account - USD (United States) (1 transactions)",
+      "sourceLineCount": 1
+    },
+    {
+      "transactionId": "SUM-0039",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 56052.68,
+      "description": "April 2025 summarized debits for Accounts Receivable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0040",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -78015.71,
+      "description": "April 2025 summarized credits for Accounts Payable - Trade (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0041",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -14302.89,
+      "description": "April 2025 summarized credits for Salaries and Wages Payable (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0042",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -44066.54,
+      "description": "April 2025 summarized credits for Common Stock (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0043",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -27695.56,
+      "description": "April 2025 summarized credits for Other Comprehensive Income (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0044",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -30531.67,
+      "description": "April 2025 summarized credits for Product Sales - North America - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0045",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -74343.71,
+      "description": "April 2025 summarized credits for Product Sales - Europe - Enterprise Software (12 transactions)",
+      "sourceLineCount": 12
+    },
+    {
+      "transactionId": "SUM-0046",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 73752.24,
+      "description": "April 2025 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0047",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 38565.85,
+      "description": "April 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0048",
+      "dateLabel": "01/04/2025",
+      "month": "2025-04",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 63669.04,
+      "description": "April 2025 summarized debits for General Facilities & Overhead (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0049",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 66471.43,
+      "description": "May 2025 summarized debits for Petty Cash (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0050",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 91176.64,
+      "description": "May 2025 summarized debits for Operating Bank Account - USD (United States) (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0051",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 55804.02,
+      "description": "May 2025 summarized debits for Accounts Receivable - Trade (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0052",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -72976.28,
+      "description": "May 2025 summarized credits for Accounts Payable - Trade (12 transactions)",
+      "sourceLineCount": 12
+    },
+    {
+      "transactionId": "SUM-0053",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -49143.98,
+      "description": "May 2025 summarized credits for Salaries and Wages Payable (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0054",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -95441.63,
+      "description": "May 2025 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0055",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -73081.33,
+      "description": "May 2025 summarized credits for Other Comprehensive Income (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0056",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -69060.07,
+      "description": "May 2025 summarized credits for Product Sales - North America - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0057",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -30915.66,
+      "description": "May 2025 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0058",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 62408.96,
+      "description": "May 2025 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0059",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 51487.52,
+      "description": "May 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0060",
+      "dateLabel": "01/05/2025",
+      "month": "2025-05",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 63270.38,
+      "description": "May 2025 summarized debits for General Facilities & Overhead (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0061",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 96379.36,
+      "description": "June 2025 summarized debits for Petty Cash (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0062",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 55907.73,
+      "description": "June 2025 summarized debits for Operating Bank Account - USD (United States) (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0063",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 92501.26,
+      "description": "June 2025 summarized debits for Accounts Receivable - Trade (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0064",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -91251.74,
+      "description": "June 2025 summarized credits for Accounts Payable - Trade (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0065",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -55728.68,
+      "description": "June 2025 summarized credits for Salaries and Wages Payable (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0066",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -80563.49,
+      "description": "June 2025 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0067",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -79976.77,
+      "description": "June 2025 summarized credits for Other Comprehensive Income (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0068",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -44028.41,
+      "description": "June 2025 summarized credits for Product Sales - North America - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0069",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -57481,
+      "description": "June 2025 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0070",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 61749.68,
+      "description": "June 2025 summarized debits for COGS - Raw Material Costs (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0071",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 48986.33,
+      "description": "June 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0072",
+      "dateLabel": "01/06/2025",
+      "month": "2025-06",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 53505.73,
+      "description": "June 2025 summarized debits for General Facilities & Overhead (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0073",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 28623.1,
+      "description": "July 2025 summarized debits for Petty Cash (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0074",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 65345.87,
+      "description": "July 2025 summarized debits for Operating Bank Account - USD (United States) (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0075",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 47984.74,
+      "description": "July 2025 summarized debits for Accounts Receivable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0076",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -22688.53,
+      "description": "July 2025 summarized credits for Accounts Payable - Trade (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0077",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -66412.96,
+      "description": "July 2025 summarized credits for Salaries and Wages Payable (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0078",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -68703.83,
+      "description": "July 2025 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0079",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -31985.3,
+      "description": "July 2025 summarized credits for Other Comprehensive Income (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0080",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -61820.4,
+      "description": "July 2025 summarized credits for Product Sales - North America - Enterprise Software (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0081",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -43230.88,
+      "description": "July 2025 summarized credits for Product Sales - Europe - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0082",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 83217.43,
+      "description": "July 2025 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0083",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 26446.06,
+      "description": "July 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0084",
+      "dateLabel": "01/07/2025",
+      "month": "2025-07",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 43224.7,
+      "description": "July 2025 summarized debits for General Facilities & Overhead (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0085",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 29330.69,
+      "description": "August 2025 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0086",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 47618.93,
+      "description": "August 2025 summarized debits for Operating Bank Account - USD (United States) (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0087",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 69015.48,
+      "description": "August 2025 summarized debits for Accounts Receivable - Trade (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0088",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -34753.12,
+      "description": "August 2025 summarized credits for Accounts Payable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0089",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -38268.84,
+      "description": "August 2025 summarized credits for Salaries and Wages Payable (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0090",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -57399.66,
+      "description": "August 2025 summarized credits for Common Stock (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0091",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -77931.15,
+      "description": "August 2025 summarized credits for Other Comprehensive Income (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0092",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -78284.59,
+      "description": "August 2025 summarized credits for Product Sales - North America - Enterprise Software (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0093",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -44062.84,
+      "description": "August 2025 summarized credits for Product Sales - Europe - Enterprise Software (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0094",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 32842.02,
+      "description": "August 2025 summarized debits for COGS - Raw Material Costs (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0095",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 98809.52,
+      "description": "August 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0096",
+      "dateLabel": "01/08/2025",
+      "month": "2025-08",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 53083.56,
+      "description": "August 2025 summarized debits for General Facilities & Overhead (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0097",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 34171.41,
+      "description": "September 2025 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0098",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 62020.77,
+      "description": "September 2025 summarized debits for Operating Bank Account - USD (United States) (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0099",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 56952.37,
+      "description": "September 2025 summarized debits for Accounts Receivable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0100",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -40137.77,
+      "description": "September 2025 summarized credits for Accounts Payable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0101",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -36429.35,
+      "description": "September 2025 summarized credits for Salaries and Wages Payable (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0102",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -69835.98,
+      "description": "September 2025 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0103",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -10595.9,
+      "description": "September 2025 summarized credits for Other Comprehensive Income (1 transactions)",
+      "sourceLineCount": 1
+    },
+    {
+      "transactionId": "SUM-0104",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -37737.6,
+      "description": "September 2025 summarized credits for Product Sales - North America - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0105",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -34519.81,
+      "description": "September 2025 summarized credits for Product Sales - Europe - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0106",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 39365.47,
+      "description": "September 2025 summarized debits for COGS - Raw Material Costs (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0107",
+      "dateLabel": "01/09/2025",
+      "month": "2025-09",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 36746.39,
+      "description": "September 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0108",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 72350.03,
+      "description": "October 2025 summarized debits for Petty Cash (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0109",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 30865.36,
+      "description": "October 2025 summarized debits for Operating Bank Account - USD (United States) (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0110",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 54362.45,
+      "description": "October 2025 summarized debits for Accounts Receivable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0111",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -92485.13,
+      "description": "October 2025 summarized credits for Accounts Payable - Trade (13 transactions)",
+      "sourceLineCount": 13
+    },
+    {
+      "transactionId": "SUM-0112",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -41944.43,
+      "description": "October 2025 summarized credits for Salaries and Wages Payable (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0113",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -32292.28,
+      "description": "October 2025 summarized credits for Common Stock (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0114",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -60257.47,
+      "description": "October 2025 summarized credits for Other Comprehensive Income (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0115",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -60981.89,
+      "description": "October 2025 summarized credits for Product Sales - North America - Enterprise Software (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0116",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -63666.9,
+      "description": "October 2025 summarized credits for Product Sales - Europe - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0117",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 93703.45,
+      "description": "October 2025 summarized debits for COGS - Raw Material Costs (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0118",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 48106.73,
+      "description": "October 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0119",
+      "dateLabel": "01/10/2025",
+      "month": "2025-10",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 52240.08,
+      "description": "October 2025 summarized debits for General Facilities & Overhead (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0120",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 68656.63,
+      "description": "November 2025 summarized debits for Petty Cash (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0121",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 92144.56,
+      "description": "November 2025 summarized debits for Operating Bank Account - USD (United States) (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0122",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 36348.09,
+      "description": "November 2025 summarized debits for Accounts Receivable - Trade (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0123",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -80957.08,
+      "description": "November 2025 summarized credits for Accounts Payable - Trade (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0124",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -33567.77,
+      "description": "November 2025 summarized credits for Salaries and Wages Payable (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0125",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -17911.72,
+      "description": "November 2025 summarized credits for Common Stock (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0126",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -51322.77,
+      "description": "November 2025 summarized credits for Other Comprehensive Income (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0127",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -38088.82,
+      "description": "November 2025 summarized credits for Product Sales - North America - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0128",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -77452.54,
+      "description": "November 2025 summarized credits for Product Sales - Europe - Enterprise Software (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0129",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 18817.83,
+      "description": "November 2025 summarized debits for COGS - Raw Material Costs (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0130",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 31355.94,
+      "description": "November 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0131",
+      "dateLabel": "01/11/2025",
+      "month": "2025-11",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 51977.65,
+      "description": "November 2025 summarized debits for General Facilities & Overhead (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0132",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 65674.63,
+      "description": "December 2025 summarized debits for Petty Cash (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0133",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 74412.72,
+      "description": "December 2025 summarized debits for Operating Bank Account - USD (United States) (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0134",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 50478.75,
+      "description": "December 2025 summarized debits for Accounts Receivable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0135",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -76965.87,
+      "description": "December 2025 summarized credits for Accounts Payable - Trade (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0136",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -72773.48,
+      "description": "December 2025 summarized credits for Salaries and Wages Payable (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0137",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -66852.21,
+      "description": "December 2025 summarized credits for Common Stock (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0138",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -62437.54,
+      "description": "December 2025 summarized credits for Other Comprehensive Income (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0139",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -38058.66,
+      "description": "December 2025 summarized credits for Product Sales - North America - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0140",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -94734.03,
+      "description": "December 2025 summarized credits for Product Sales - Europe - Enterprise Software (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0141",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 77087.25,
+      "description": "December 2025 summarized debits for COGS - Raw Material Costs (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0142",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 92398.69,
+      "description": "December 2025 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0143",
+      "dateLabel": "01/12/2025",
+      "month": "2025-12",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 51769.75,
+      "description": "December 2025 summarized debits for General Facilities & Overhead (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0144",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 62417.09,
+      "description": "January 2026 summarized debits for Petty Cash (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0145",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 103730.91,
+      "description": "January 2026 summarized debits for Operating Bank Account - USD (United States) (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0146",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 35856.08,
+      "description": "January 2026 summarized debits for Accounts Receivable - Trade (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0147",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -59170.43,
+      "description": "January 2026 summarized credits for Accounts Payable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0148",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -48537.85,
+      "description": "January 2026 summarized credits for Salaries and Wages Payable (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0149",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -137379.89,
+      "description": "January 2026 summarized credits for Common Stock (12 transactions)",
+      "sourceLineCount": 12
+    },
+    {
+      "transactionId": "SUM-0150",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -14376.27,
+      "description": "January 2026 summarized credits for Other Comprehensive Income (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0151",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -65295.87,
+      "description": "January 2026 summarized credits for Product Sales - North America - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0152",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -38428.35,
+      "description": "January 2026 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0153",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 41822.19,
+      "description": "January 2026 summarized debits for COGS - Raw Material Costs (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0154",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 79615.12,
+      "description": "January 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0155",
+      "dateLabel": "01/01/2026",
+      "month": "2026-01",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 39747.27,
+      "description": "January 2026 summarized debits for General Facilities & Overhead (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0156",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 54359.8,
+      "description": "February 2026 summarized debits for Petty Cash (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0157",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 30263.24,
+      "description": "February 2026 summarized debits for Operating Bank Account - USD (United States) (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0158",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 102432.8,
+      "description": "February 2026 summarized debits for Accounts Receivable - Trade (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0159",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -74419,
+      "description": "February 2026 summarized credits for Accounts Payable - Trade (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0160",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -25948.87,
+      "description": "February 2026 summarized credits for Salaries and Wages Payable (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0161",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -57355.79,
+      "description": "February 2026 summarized credits for Common Stock (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0162",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -24486.3,
+      "description": "February 2026 summarized credits for Other Comprehensive Income (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0163",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -49666.26,
+      "description": "February 2026 summarized credits for Product Sales - North America - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0164",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -75228.12,
+      "description": "February 2026 summarized credits for Product Sales - Europe - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0165",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 54468.87,
+      "description": "February 2026 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0166",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 19129.12,
+      "description": "February 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0167",
+      "dateLabel": "01/02/2026",
+      "month": "2026-02",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 46450.51,
+      "description": "February 2026 summarized debits for General Facilities & Overhead (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0168",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 56440.3,
+      "description": "March 2026 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0169",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 60308.85,
+      "description": "March 2026 summarized debits for Operating Bank Account - USD (United States) (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0170",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 58329.98,
+      "description": "March 2026 summarized debits for Accounts Receivable - Trade (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0171",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -106698.24,
+      "description": "March 2026 summarized credits for Accounts Payable - Trade (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0172",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -28061.52,
+      "description": "March 2026 summarized credits for Salaries and Wages Payable (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0173",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -13058,
+      "description": "March 2026 summarized credits for Common Stock (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0174",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -102163.41,
+      "description": "March 2026 summarized credits for Other Comprehensive Income (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0175",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -112833.79,
+      "description": "March 2026 summarized credits for Product Sales - North America - Enterprise Software (13 transactions)",
+      "sourceLineCount": 13
+    },
+    {
+      "transactionId": "SUM-0176",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -57953,
+      "description": "March 2026 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0177",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 75843.9,
+      "description": "March 2026 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0178",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 70057.9,
+      "description": "March 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0179",
+      "dateLabel": "01/03/2026",
+      "month": "2026-03",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 99787.03,
+      "description": "March 2026 summarized debits for General Facilities & Overhead (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0180",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 35306.59,
+      "description": "April 2026 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0181",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 7516.28,
+      "description": "April 2026 summarized debits for Operating Bank Account - USD (United States) (1 transactions)",
+      "sourceLineCount": 1
+    },
+    {
+      "transactionId": "SUM-0182",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 65021.1,
+      "description": "April 2026 summarized debits for Accounts Receivable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0183",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -90498.2,
+      "description": "April 2026 summarized credits for Accounts Payable - Trade (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0184",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -16591.36,
+      "description": "April 2026 summarized credits for Salaries and Wages Payable (2 transactions)",
+      "sourceLineCount": 2
+    },
+    {
+      "transactionId": "SUM-0185",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -51117.19,
+      "description": "April 2026 summarized credits for Common Stock (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0186",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -32126.85,
+      "description": "April 2026 summarized credits for Other Comprehensive Income (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0187",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -35416.73,
+      "description": "April 2026 summarized credits for Product Sales - North America - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0188",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -86238.69,
+      "description": "April 2026 summarized credits for Product Sales - Europe - Enterprise Software (12 transactions)",
+      "sourceLineCount": 12
+    },
+    {
+      "transactionId": "SUM-0189",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 85552.6,
+      "description": "April 2026 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0190",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 44736.38,
+      "description": "April 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0191",
+      "dateLabel": "01/04/2026",
+      "month": "2026-04",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 73856.07,
+      "description": "April 2026 summarized debits for General Facilities & Overhead (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0192",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 77106.86,
+      "description": "May 2026 summarized debits for Petty Cash (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0193",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 105764.91,
+      "description": "May 2026 summarized debits for Operating Bank Account - USD (United States) (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0194",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 64732.67,
+      "description": "May 2026 summarized debits for Accounts Receivable - Trade (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0195",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -84652.5,
+      "description": "May 2026 summarized credits for Accounts Payable - Trade (12 transactions)",
+      "sourceLineCount": 12
+    },
+    {
+      "transactionId": "SUM-0196",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -57007.02,
+      "description": "May 2026 summarized credits for Salaries and Wages Payable (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0197",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -110712.28,
+      "description": "May 2026 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0198",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -84774.33,
+      "description": "May 2026 summarized credits for Other Comprehensive Income (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0199",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -80109.68,
+      "description": "May 2026 summarized credits for Product Sales - North America - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0200",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -35862.18,
+      "description": "May 2026 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0201",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 72394.39,
+      "description": "May 2026 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0202",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 59725.52,
+      "description": "May 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0203",
+      "dateLabel": "01/05/2026",
+      "month": "2026-05",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 73393.64,
+      "description": "May 2026 summarized debits for General Facilities & Overhead (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0204",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 111800.07,
+      "description": "June 2026 summarized debits for Petty Cash (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0205",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 64852.96,
+      "description": "June 2026 summarized debits for Operating Bank Account - USD (United States) (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0206",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 107301.45,
+      "description": "June 2026 summarized debits for Accounts Receivable - Trade (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0207",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -105852.01,
+      "description": "June 2026 summarized credits for Accounts Payable - Trade (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0208",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -64645.26,
+      "description": "June 2026 summarized credits for Salaries and Wages Payable (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0209",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -93453.64,
+      "description": "June 2026 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0210",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -92773.04,
+      "description": "June 2026 summarized credits for Other Comprehensive Income (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0211",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -51072.96,
+      "description": "June 2026 summarized credits for Product Sales - North America - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0212",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -66677.96,
+      "description": "June 2026 summarized credits for Product Sales - Europe - Enterprise Software (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0213",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 71629.62,
+      "description": "June 2026 summarized debits for COGS - Raw Material Costs (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0214",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 56824.13,
+      "description": "June 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0215",
+      "dateLabel": "01/06/2026",
+      "month": "2026-06",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 62066.64,
+      "description": "June 2026 summarized debits for General Facilities & Overhead (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0216",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 33202.79,
+      "description": "July 2026 summarized debits for Petty Cash (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0217",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 75801.21,
+      "description": "July 2026 summarized debits for Operating Bank Account - USD (United States) (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0218",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 55662.31,
+      "description": "July 2026 summarized debits for Accounts Receivable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0219",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -26318.7,
+      "description": "July 2026 summarized credits for Accounts Payable - Trade (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0220",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -77039.03,
+      "description": "July 2026 summarized credits for Salaries and Wages Payable (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0221",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -79696.45,
+      "description": "July 2026 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0222",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -37102.94,
+      "description": "July 2026 summarized credits for Other Comprehensive Income (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0223",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -71711.67,
+      "description": "July 2026 summarized credits for Product Sales - North America - Enterprise Software (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0224",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -50147.83,
+      "description": "July 2026 summarized credits for Product Sales - Europe - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0225",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 96532.22,
+      "description": "July 2026 summarized debits for COGS - Raw Material Costs (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0226",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 30677.43,
+      "description": "July 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0227",
+      "dateLabel": "01/07/2026",
+      "month": "2026-07",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 50140.66,
+      "description": "July 2026 summarized debits for General Facilities & Overhead (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0228",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 34023.6,
+      "description": "August 2026 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0229",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 55237.95,
+      "description": "August 2026 summarized debits for Operating Bank Account - USD (United States) (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0230",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 80057.95,
+      "description": "August 2026 summarized debits for Accounts Receivable - Trade (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0231",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -40313.62,
+      "description": "August 2026 summarized credits for Accounts Payable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0232",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -44391.84,
+      "description": "August 2026 summarized credits for Salaries and Wages Payable (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0233",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -66583.59,
+      "description": "August 2026 summarized credits for Common Stock (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0234",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -90400.14,
+      "description": "August 2026 summarized credits for Other Comprehensive Income (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0235",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -90810.12,
+      "description": "August 2026 summarized credits for Product Sales - North America - Enterprise Software (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0236",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -51112.9,
+      "description": "August 2026 summarized credits for Product Sales - Europe - Enterprise Software (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0237",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 38096.74,
+      "description": "August 2026 summarized debits for COGS - Raw Material Costs (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0238",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 114619.04,
+      "description": "August 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0239",
+      "dateLabel": "01/08/2026",
+      "month": "2026-08",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 61576.93,
+      "description": "August 2026 summarized debits for General Facilities & Overhead (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0240",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 39638.84,
+      "description": "September 2026 summarized debits for Petty Cash (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0241",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 71944.1,
+      "description": "September 2026 summarized debits for Operating Bank Account - USD (United States) (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0242",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 66064.74,
+      "description": "September 2026 summarized debits for Accounts Receivable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0243",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -46559.82,
+      "description": "September 2026 summarized credits for Accounts Payable - Trade (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0244",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -42258.05,
+      "description": "September 2026 summarized credits for Salaries and Wages Payable (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0245",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -81009.74,
+      "description": "September 2026 summarized credits for Common Stock (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0246",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -12291.24,
+      "description": "September 2026 summarized credits for Other Comprehensive Income (1 transactions)",
+      "sourceLineCount": 1
+    },
+    {
+      "transactionId": "SUM-0247",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -43775.62,
+      "description": "September 2026 summarized credits for Product Sales - North America - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0248",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -40042.98,
+      "description": "September 2026 summarized credits for Product Sales - Europe - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0249",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 45663.95,
+      "description": "September 2026 summarized debits for COGS - Raw Material Costs (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0250",
+      "dateLabel": "01/09/2026",
+      "month": "2026-09",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 42625.82,
+      "description": "September 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0251",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 83926.04,
+      "description": "October 2026 summarized debits for Petty Cash (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0252",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 35803.81,
+      "description": "October 2026 summarized debits for Operating Bank Account - USD (United States) (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0253",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 63060.44,
+      "description": "October 2026 summarized debits for Accounts Receivable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0254",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -107282.75,
+      "description": "October 2026 summarized credits for Accounts Payable - Trade (13 transactions)",
+      "sourceLineCount": 13
+    },
+    {
+      "transactionId": "SUM-0255",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -48655.54,
+      "description": "October 2026 summarized credits for Salaries and Wages Payable (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0256",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -37459.05,
+      "description": "October 2026 summarized credits for Common Stock (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0257",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -69898.65,
+      "description": "October 2026 summarized credits for Other Comprehensive Income (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0258",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -70738.99,
+      "description": "October 2026 summarized credits for Product Sales - North America - Enterprise Software (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0259",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -73853.6,
+      "description": "October 2026 summarized credits for Product Sales - Europe - Enterprise Software (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0260",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 108695.99,
+      "description": "October 2026 summarized debits for COGS - Raw Material Costs (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0261",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 55803.81,
+      "description": "October 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0262",
+      "dateLabel": "01/10/2026",
+      "month": "2026-10",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 60598.49,
+      "description": "October 2026 summarized debits for General Facilities & Overhead (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0263",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 79641.68,
+      "description": "November 2026 summarized debits for Petty Cash (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0264",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 106887.68,
+      "description": "November 2026 summarized debits for Operating Bank Account - USD (United States) (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0265",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 42163.77,
+      "description": "November 2026 summarized debits for Accounts Receivable - Trade (5 transactions)",
+      "sourceLineCount": 5
+    },
+    {
+      "transactionId": "SUM-0266",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -93910.21,
+      "description": "November 2026 summarized credits for Accounts Payable - Trade (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0267",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -38938.6,
+      "description": "November 2026 summarized credits for Salaries and Wages Payable (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0268",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -20777.59,
+      "description": "November 2026 summarized credits for Common Stock (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0269",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -59534.41,
+      "description": "November 2026 summarized credits for Other Comprehensive Income (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0270",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -44183.04,
+      "description": "November 2026 summarized credits for Product Sales - North America - Enterprise Software (6 transactions)",
+      "sourceLineCount": 6
+    },
+    {
+      "transactionId": "SUM-0271",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -89844.94,
+      "description": "November 2026 summarized credits for Product Sales - Europe - Enterprise Software (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0272",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 21828.69,
+      "description": "November 2026 summarized debits for COGS - Raw Material Costs (3 transactions)",
+      "sourceLineCount": 3
+    },
+    {
+      "transactionId": "SUM-0273",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 36372.89,
+      "description": "November 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0274",
+      "dateLabel": "01/11/2026",
+      "month": "2026-11",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 60294.08,
+      "description": "November 2026 summarized debits for General Facilities & Overhead (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0275",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "101000",
+      "type": "Debit",
+      "amount": 76182.57,
+      "description": "December 2026 summarized debits for Petty Cash (8 transactions)",
+      "sourceLineCount": 8
+    },
+    {
+      "transactionId": "SUM-0276",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "102001",
+      "type": "Debit",
+      "amount": 86318.75,
+      "description": "December 2026 summarized debits for Operating Bank Account - USD (United States) (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0277",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "110000",
+      "type": "Debit",
+      "amount": 58555.35,
+      "description": "December 2026 summarized debits for Accounts Receivable - Trade (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0278",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "201000",
+      "type": "Credit",
+      "amount": -89280.42,
+      "description": "December 2026 summarized credits for Accounts Payable - Trade (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0279",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "210000",
+      "type": "Credit",
+      "amount": -84417.24,
+      "description": "December 2026 summarized credits for Salaries and Wages Payable (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0280",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "301000",
+      "type": "Credit",
+      "amount": -77548.55,
+      "description": "December 2026 summarized credits for Common Stock (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0281",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "390000",
+      "type": "Credit",
+      "amount": -72427.55,
+      "description": "December 2026 summarized credits for Other Comprehensive Income (7 transactions)",
+      "sourceLineCount": 7
+    },
+    {
+      "transactionId": "SUM-0282",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "401000",
+      "type": "Credit",
+      "amount": -44148.05,
+      "description": "December 2026 summarized credits for Product Sales - North America - Enterprise Software (4 transactions)",
+      "sourceLineCount": 4
+    },
+    {
+      "transactionId": "SUM-0283",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "402000",
+      "type": "Credit",
+      "amount": -109891.47,
+      "description": "December 2026 summarized credits for Product Sales - Europe - Enterprise Software (11 transactions)",
+      "sourceLineCount": 11
+    },
+    {
+      "transactionId": "SUM-0284",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "501000",
+      "type": "Debit",
+      "amount": 89421.22,
+      "description": "December 2026 summarized debits for COGS - Raw Material Costs (10 transactions)",
+      "sourceLineCount": 10
+    },
+    {
+      "transactionId": "SUM-0285",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "601010",
+      "type": "Debit",
+      "amount": 107182.48,
+      "description": "December 2026 summarized debits for Salaries - Sales & Marketing Team - Corporate/HQ (9 transactions)",
+      "sourceLineCount": 9
+    },
+    {
+      "transactionId": "SUM-0286",
+      "dateLabel": "01/12/2026",
+      "month": "2026-12",
+      "accountNumber": "610000",
+      "type": "Debit",
+      "amount": 60052.91,
+      "description": "December 2026 summarized debits for General Facilities & Overhead (4 transactions)",
+      "sourceLineCount": 4
+    }
+  ]
+}

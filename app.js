@@ -105,6 +105,7 @@ const tabs = [
   ["overview", "Overview", "dashboard"],
   ["pnl", "Income Statement", "receipt"],
   ["balance", "Balance Sheet", "landmark"],
+  ["cashflow", "Cash Flow", "wallet"],
   ["cash", "Cash & Working Capital", "wallet"],
   ["ratios", "Ratios", "activity"],
   ["expenses", "Expenses", "factory"],
@@ -119,6 +120,11 @@ const state = {
     departments: [],
     regions: [],
     search: ""
+  },
+  reporting: {
+    periodType: "month",
+    period: "",
+    comparisonMode: "prior-year"
   },
   openFilter: null,
   drillTarget: null,
@@ -138,6 +144,7 @@ const state = {
   },
   options: {
     months: [],
+    years: [],
     categories: [],
     departments: [],
     regions: []
@@ -187,6 +194,50 @@ function parseObjects(raw) {
 
 const ACCOUNT_COLUMNS = ["AccountKey", "AccountNumber", "AccountName", "Category_L1", "Subcategory_L2", "DetailGroup_L3", "Region", "Department"];
 const TRANSACTION_COLUMNS = ["TransactionID", "Date", "AccountNumber", "Description", "Amount", "Type"];
+
+function inferCashFlowSection(account) {
+  const text = `${account.accountName} ${account.subcategory} ${account.detailGroup}`.toLowerCase();
+  if (account.detailGroup === "Cash & Cash Equivalents") return "Cash";
+  if (text.includes("depreciation") || text.includes("amortization")) return "NonCash";
+  if (text.includes("capitalized") || text.includes("equipment") || text.includes("fixtures") || text.includes("development")) return "Investing";
+  if (text.includes("loan") || text.includes("borrow") || account.category === "Equity") return "Financing";
+  return "Operating";
+}
+
+function inferCashFlowLine(account) {
+  const text = `${account.accountName} ${account.subcategory} ${account.detailGroup}`.toLowerCase();
+  if (account.detailGroup === "Cash & Cash Equivalents") return "Cash accounts";
+  if (account.category === "Revenue") return "Customer receipts and revenue activity";
+  if (text.includes("payroll") || text.includes("salaries")) return "Payroll and people costs";
+  if (text.includes("tax")) return "Tax payments and accruals";
+  if (text.includes("interest")) return "Interest paid or received";
+  if (text.includes("inventory")) return "Inventory and supplier payments";
+  if (text.includes("capitalized") || text.includes("development")) return "Capitalized development";
+  if (text.includes("equipment") || text.includes("fixtures")) return "Capital expenditure";
+  if (text.includes("loan") || text.includes("borrow")) return "Loan proceeds and repayments";
+  if (account.category === "Equity") return "Equity financing";
+  if (account.category === "Expenses") return "Operating supplier payments";
+  return "Working capital movement";
+}
+
+function normalizeAccount(row) {
+  const account = {
+    accountKey: row.AccountKey,
+    accountNumber: row.AccountNumber,
+    accountName: row.AccountName,
+    category: row.Category_L1,
+    subcategory: row.Subcategory_L2,
+    detailGroup: row.DetailGroup_L3,
+    region: row.Region,
+    department: row.Department,
+    normalBalance: row.NormalBalance || "",
+    cashFlowSection: row.CashFlowSection || "",
+    cashFlowLine: row.CashFlowLine || ""
+  };
+  account.cashFlowSection ||= inferCashFlowSection(account);
+  account.cashFlowLine ||= inferCashFlowLine(account);
+  return account;
+}
 
 function csvHeaders(raw) {
   const [headers = []] = parseCsv(raw);
@@ -282,6 +333,8 @@ function metrics(rows) {
   const netResult = revenue - totalExpenses;
   const assets = sum((row) => row.category === "Assets");
   const liabilities = sum((row) => row.category === "Liabilities");
+  const currentAssets = sum((row) => row.subcategory === "Current Assets");
+  const currentLiabilities = sum((row) => row.subcategory === "Current Liabilities");
   const reportedEquity = sum((row) => row.category === "Equity");
   const currentYearEarnings = netResult;
   const equity = reportedEquity + currentYearEarnings;
@@ -298,13 +351,15 @@ function metrics(rows) {
     ebitMargin: revenue ? ebit / revenue : 0,
     assets,
     liabilities,
+    currentAssets,
+    currentLiabilities,
     reportedEquity,
     currentYearEarnings,
     equity,
     balanceCheck: assets - liabilities - equity,
     cash,
-    workingCapital: assets - liabilities,
-    currentRatio: liabilities ? assets / liabilities : 0,
+    workingCapital: currentAssets - currentLiabilities,
+    currentRatio: currentLiabilities ? currentAssets / currentLiabilities : 0,
     debtToEquity: equity ? liabilities / equity : 0,
     transactions: state.controls?.totalTransactions ?? new Set(rows.map((row) => row.transactionId)).size,
     lines: rows.length
@@ -347,6 +402,10 @@ function byDrillTarget(rows) {
     if (target.detailGroup && row.detailGroup !== target.detailGroup) return false;
     if (target.subcategory && row.subcategory !== target.subcategory) return false;
     if (target.category && row.category !== target.category) return false;
+    if (target.cashFlowSection && row.cashFlowSection !== target.cashFlowSection) return false;
+    if (target.cashFlowLine && row.cashFlowLine !== target.cashFlowLine) return false;
+    if (target.month && row.month !== target.month) return false;
+    if (target.months && !target.months.includes(row.month)) return false;
     return true;
   });
 }
@@ -412,13 +471,108 @@ function monthLabel(month) {
   return month ? month : "n/a";
 }
 
+function monthKey(date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+}
+
+function monthIndex(month) {
+  return Number(month.slice(0, 4)) * 12 + Number(month.slice(5, 7)) - 1;
+}
+
+function monthFromIndex(index) {
+  const year = Math.floor(index / 12);
+  const month = (index % 12) + 1;
+  return `${year}-${String(month).padStart(2, "0")}`;
+}
+
+function addMonths(month, delta) {
+  return monthFromIndex(monthIndex(month) + delta);
+}
+
+function availableYears() {
+  return [...new Set(state.options.months.map((month) => month.slice(0, 4)))].sort();
+}
+
+function defaultReportingPeriod() {
+  return state.options.months.at(-1) ?? "";
+}
+
+function ensureReportingPeriod() {
+  if (!state.reporting.period || !state.options.months.includes(state.reporting.period)) {
+    state.reporting.period = defaultReportingPeriod();
+  }
+}
+
+function periodLabel(month) {
+  return month ? readableMonth(month) : "No period";
+}
+
+function priorYearPeriod(month) {
+  return month ? `${Number(month.slice(0, 4)) - 1}-${month.slice(5, 7)}` : "";
+}
+
+function periodRows(rows, month = state.reporting.period) {
+  return month ? rows.filter((row) => row.month === month) : rows;
+}
+
+function monthsToDate(month) {
+  if (!month) return [];
+  const year = month.slice(0, 4);
+  return state.options.months.filter((item) => item.slice(0, 4) === year && item <= month);
+}
+
+function ytdRows(rows, month = state.reporting.period) {
+  const months = monthsToDate(month);
+  return rows.filter((row) => months.includes(row.month));
+}
+
+function cumulativeRows(rows, throughMonth = state.reporting.period) {
+  return throughMonth ? rows.filter((row) => row.month <= throughMonth) : rows;
+}
+
+function comparisonSets(rows) {
+  ensureReportingPeriod();
+  const currentMonth = state.reporting.period;
+  const priorYear = priorYearPeriod(currentMonth);
+  const priorMonth = addMonths(currentMonth, -1);
+  const secondPriorMonth = addMonths(currentMonth, -2);
+  return {
+    currentMonth,
+    priorYear,
+    priorMonth,
+    secondPriorMonth,
+    current: periodRows(rows, currentMonth),
+    priorYearRows: periodRows(rows, priorYear),
+    priorMonthRows: periodRows(rows, priorMonth),
+    secondPriorMonthRows: periodRows(rows, secondPriorMonth),
+    currentYtd: ytdRows(rows, currentMonth),
+    priorYtd: ytdRows(rows, priorYear),
+    cumulativeCurrent: cumulativeRows(rows, currentMonth),
+    cumulativePriorYear: cumulativeRows(rows, priorYear)
+  };
+}
+
+function varianceAmount(current, comparison) {
+  return current - comparison;
+}
+
+function variancePercent(current, comparison) {
+  return comparison ? (current - comparison) / Math.abs(comparison) : 0;
+}
+
+function fmtVariance(current, comparison) {
+  const amount = varianceAmount(current, comparison);
+  return `${fmtMoney(amount)} ${comparison ? `(${pct.format(variancePercent(current, comparison))})` : ""}`.trim();
+}
+
 function reportSubtitle() {
   if (!state.dataLoaded) return "Interactive financial statements reporting pack";
   const checks = integrityChecks();
   const start = checks.firstDate?.getFullYear?.();
   const end = checks.lastDate?.getFullYear?.();
   const yearLabel = start && end ? (start === end ? String(start) : `${start}-${end}`) : "current";
-  return `Interactive ${yearLabel} financial statements reporting pack`;
+  const period = state.reporting.period ? ` | ${periodLabel(state.reporting.period)}` : "";
+  return `Interactive ${yearLabel} financial statements reporting pack${period}`;
 }
 
 function monthlyVariance(rows) {
@@ -445,9 +599,12 @@ function monthlyVariance(rows) {
 }
 
 function cfoExceptions(rows) {
-  const m = metrics(rows);
+  const sets = comparisonSets(rows);
+  const currentRows = sets.current;
+  const m = metrics(currentRows);
+  const balanceMetrics = metrics(sets.cumulativeCurrent);
   const expenseMix = groupSum(
-    rows.filter((row) => row.category === "Expenses"),
+    currentRows.filter((row) => row.category === "Expenses"),
     (row) => row.accountName
   );
   const topExpense = expenseMix[0];
@@ -476,11 +633,11 @@ function cfoExceptions(rows) {
       view: "pnl"
     });
   }
-  if (m.currentRatio < 1.2 || m.currentRatio > 3) {
+  if (balanceMetrics.currentRatio < 1.2 || balanceMetrics.currentRatio > 3) {
     exceptions.push({
       severity: "warning",
       title: "Liquidity watch",
-      text: `Current ratio is ${m.currentRatio.toFixed(2)}, outside the preferred 1.2-3.0 range.`,
+      text: `Current ratio is ${balanceMetrics.currentRatio.toFixed(2)}, outside the preferred 1.2-3.0 range.`,
       view: "cash"
     });
   }
@@ -490,14 +647,17 @@ function cfoExceptions(rows) {
       title: "Expense concentration",
       text: `${topExpense.name} represents ${pct.format(topExpense.value / (m.opex + m.cogs))} of expenses.`,
       view: "expenses",
-      accountNumber: rows.find((row) => row.accountName === topExpense.name)?.accountNumber
+      accountNumber: currentRows.find((row) => row.accountName === topExpense.name)?.accountNumber
     });
   }
   return exceptions;
 }
 
 function pageNarrative(view, rows) {
-  const m = metrics(rows);
+  const sets = comparisonSets(rows);
+  const periodMetrics = metrics(sets.current);
+  const balanceMetrics = metrics(sets.cumulativeCurrent);
+  const m = ["balance", "cash"].includes(view) ? balanceMetrics : periodMetrics;
   const variance = monthlyVariance(rows);
   const lines = {
     overview: [
@@ -512,7 +672,7 @@ function pageNarrative(view, rows) {
     ],
     balance: [
       `Assets are ${fmtMoney(m.assets)} and balance against liabilities plus adjusted equity of ${fmtMoney(m.liabilities + m.equity)}.`,
-      `Equity includes current-year net earnings/loss of ${fmtMoney(m.currentYearEarnings)} so the statement balances.`,
+      `Equity includes accumulated earnings/loss of ${fmtMoney(m.currentYearEarnings)} so the statement balances.`,
       `Current ratio is ${m.currentRatio.toFixed(2)} and debt-to-equity is ${m.debtToEquity.toFixed(2)}.`
     ],
     cash: [
@@ -520,10 +680,15 @@ function pageNarrative(view, rows) {
       `Revenue run-rate is ${fmtMoney(variance.revenueRunRate)} versus opex run-rate of ${fmtMoney(variance.opexRunRate)}.`,
       "Formal cash flow classification requires opening balances and cash-flow tags."
     ],
+    cashflow: [
+      `Cash flow compares ${periodLabel(state.reporting.period)} against prior year and the two immediately preceding months.`,
+      "Operating, investing, and financing lines use cash-flow tags when available and inferred classifications otherwise.",
+      "Closing cash reconciles to accounts tagged Cash & Cash Equivalents."
+    ],
     ratios: [
-      `Margins show a viable gross-profit engine but weak operating conversion.`,
+      `${m.ebit >= 0 ? "Operating conversion is positive" : "Operating conversion is negative"} at ${pct.format(m.ebitMargin)} operating margin.`,
       `COGS/revenue is ${pct.format(m.cogs / Math.max(m.revenue, 1))}; opex/revenue is ${pct.format(m.opex / Math.max(m.revenue, 1))}.`,
-      `Liquidity is acceptable on current ratio, but operating losses require attention.`
+      `Current ratio is ${balanceMetrics.currentRatio.toFixed(2)} on cumulative current assets and current liabilities.`
     ],
     expenses: [
       `Total expenses are ${fmtMoney(m.cogs + m.opex)}, with opex at ${fmtMoney(m.opex)}.`,
@@ -531,7 +696,7 @@ function pageNarrative(view, rows) {
       "Click an account bar to inspect its journal support."
     ],
     ledger: [
-      `${m.lines} report rows are visible under the current filters.`,
+      `${rows.length} report rows are visible under the current filters.`,
       state.controls ? "The ledger explorer shows monthly account summaries created from the uploaded files." : "The ledger explorer is the audit trail behind every chart and statement.",
       "Download the filtered set when a working-paper extract is needed."
     ]
@@ -569,16 +734,7 @@ function reconciliationPanel() {
 }
 
 function loadData(accountsRaw, transactionsRaw) {
-  const accounts = parseObjects(accountsRaw).map((row) => ({
-    accountKey: row.AccountKey,
-    accountNumber: row.AccountNumber,
-    accountName: row.AccountName,
-    category: row.Category_L1,
-    subcategory: row.Subcategory_L2,
-    detailGroup: row.DetailGroup_L3,
-    region: row.Region,
-    department: row.Department
-  }));
+  const accounts = parseObjects(accountsRaw).map(normalizeAccount);
   const accountMap = new Map(accounts.map((account) => [account.accountNumber, account]));
   const ledger = parseObjects(transactionsRaw).map((row) => {
     const account = accountMap.get(row.AccountNumber);
@@ -598,6 +754,8 @@ function loadData(accountsRaw, transactionsRaw) {
       detailGroup: account.detailGroup,
       region: account.region,
       department: account.department,
+      cashFlowSection: account.cashFlowSection,
+      cashFlowLine: account.cashFlowLine,
       description: row.Description,
       amount,
       presentationAmount: presentationAmount(account.category, amount),
@@ -612,10 +770,12 @@ function loadData(accountsRaw, transactionsRaw) {
   state.dataLoaded = true;
   state.options = {
     months: [...new Set(ledger.map((row) => row.month))].sort(),
+    years: [...new Set(ledger.map((row) => row.month.slice(0, 4)))].sort(),
     categories: [...new Set(ledger.map((row) => row.category))].sort(),
     departments: [...new Set(ledger.map((row) => row.department))].sort(),
     regions: [...new Set(ledger.map((row) => row.region))].sort()
   };
+  ensureReportingPeriod();
 }
 
 function monthStartLabel(month) {
@@ -643,16 +803,7 @@ function buildReportDataFromCsv(accountsRaw, transactionsRaw) {
   );
   requireColumns(transactionRows, TRANSACTION_COLUMNS, "Transactions.csv");
 
-  const accounts = accountRows.map((row) => ({
-    accountKey: row.AccountKey,
-    accountNumber: row.AccountNumber,
-    accountName: row.AccountName,
-    category: row.Category_L1,
-    subcategory: row.Subcategory_L2,
-    detailGroup: row.DetailGroup_L3,
-    region: row.Region,
-    department: row.Department
-  }));
+  const accounts = accountRows.map(normalizeAccount);
   const accountMap = new Map(accounts.map((account) => [account.accountNumber, account]));
   const sourceLedger = transactionRows.map((row) => {
     const account = accountMap.get(row.AccountNumber);
@@ -740,7 +891,20 @@ function buildReportDataFromCsv(accountsRaw, transactionsRaw) {
 }
 
 function loadReportData(reportData) {
-  const accountMap = new Map(reportData.accounts.map((account) => [account.accountNumber, account]));
+  const accounts = reportData.accounts.map((account) => normalizeAccount({
+    AccountKey: account.accountKey,
+    AccountNumber: account.accountNumber,
+    AccountName: account.accountName,
+    Category_L1: account.category,
+    Subcategory_L2: account.subcategory,
+    DetailGroup_L3: account.detailGroup,
+    Region: account.region,
+    Department: account.department,
+    CashFlowSection: account.cashFlowSection,
+    CashFlowLine: account.cashFlowLine,
+    NormalBalance: account.normalBalance
+  }));
+  const accountMap = new Map(accounts.map((account) => [account.accountNumber, account]));
   const ledger = reportData.ledger.map((row) => {
     const account = accountMap.get(row.accountNumber);
     if (!account) throw new Error(`Missing account ${row.accountNumber}`);
@@ -758,6 +922,8 @@ function loadReportData(reportData) {
       detailGroup: account.detailGroup,
       region: account.region,
       department: account.department,
+      cashFlowSection: account.cashFlowSection,
+      cashFlowLine: account.cashFlowLine,
       description: row.description,
       amount: Number(row.amount),
       presentationAmount: presentationAmount(account.category, Number(row.amount)),
@@ -766,17 +932,19 @@ function loadReportData(reportData) {
     };
   });
 
-  state.accounts = reportData.accounts;
+  state.accounts = accounts;
   state.ledger = ledger;
   state.controls = reportData.controls;
   state.dataMode = reportData.privacy?.mode ?? "json";
   state.dataLoaded = true;
   state.options = {
     months: [...new Set(ledger.map((row) => row.month))].sort(),
+    years: [...new Set(ledger.map((row) => row.month.slice(0, 4)))].sort(),
     categories: [...new Set(ledger.map((row) => row.category))].sort(),
     departments: [...new Set(ledger.map((row) => row.department))].sort(),
     regions: [...new Set(ledger.map((row) => row.region))].sort()
   };
+  ensureReportingPeriod();
 }
 
 function buildPnl(rows) {
@@ -863,7 +1031,7 @@ function buildBalance(rows) {
   });
   lines.push({
     id: "current-year-earnings",
-    label: "Current Year Earnings / (Loss)",
+    label: "Accumulated Earnings / (Loss)",
     amount: m.currentYearEarnings,
     level: 1,
     kind: "line"
@@ -876,6 +1044,133 @@ function buildBalance(rows) {
     kind: "subtotal"
   });
   return lines;
+}
+
+function lineAmount(lines, id) {
+  return lines.find((line) => line.id === id)?.amount ?? 0;
+}
+
+function comparativeLines(builder, rows, options = {}) {
+  const sets = comparisonSets(rows);
+  const currentLines = builder(sets.current);
+  const priorYearLines = builder(sets.priorYearRows);
+  const priorMonthLines = builder(sets.priorMonthRows);
+  const secondPriorMonthLines = builder(sets.secondPriorMonthRows);
+  return currentLines.map((line) => {
+    const priorYear = lineAmount(priorYearLines, line.id);
+    const priorMonth = lineAmount(priorMonthLines, line.id);
+    const secondPriorMonth = lineAmount(secondPriorMonthLines, line.id);
+    return {
+      ...line,
+      current: line.amount,
+      priorYear,
+      priorMonth,
+      secondPriorMonth,
+      varianceYear: varianceAmount(line.amount, priorYear),
+      varianceMonth: varianceAmount(line.amount, priorMonth),
+      commonSize: options.denominator ? line.amount / options.denominator : 0
+    };
+  });
+}
+
+function comparativeBalanceLines(rows) {
+  const sets = comparisonSets(rows);
+  const currentLines = buildBalance(sets.cumulativeCurrent);
+  const priorLines = buildBalance(sets.cumulativePriorYear);
+  const denominator = metrics(sets.cumulativeCurrent).assets;
+  return currentLines.map((line) => {
+    const priorYear = lineAmount(priorLines, line.id);
+    return {
+      ...line,
+      current: line.amount,
+      priorYear,
+      varianceYear: varianceAmount(line.amount, priorYear),
+      commonSize: denominator ? line.amount / denominator : 0
+    };
+  });
+}
+
+function cashFlowRows(rows) {
+  const cashRows = rows.filter((row) => row.cashFlowSection === "Cash");
+  const nonCashRows = rows.filter((row) => {
+    if (row.cashFlowSection === "Cash" || row.cashFlowSection === "NonCash") return false;
+    const text = `${row.description} ${row.accountName}`.toLowerCase();
+    if ((text.includes("depreciation") || text.includes("amortization")) && row.amount < 0) return false;
+    return true;
+  });
+  const lineRows = groupSum(nonCashRows, (row) => `${row.cashFlowSection}|${row.cashFlowLine}`, (row) => -row.amount);
+  const sections = ["Operating", "Investing", "Financing"];
+  const lines = [];
+  sections.forEach((section) => {
+    const sectionLines = lineRows.filter((item) => item.name.startsWith(`${section}|`));
+    const sectionTotal = sectionLines.reduce((sum, item) => sum + item.value, 0);
+    lines.push({ id: `cf-${section}`, label: `${section} cash movement`, amount: sectionTotal, level: 0, kind: "section", cashFlowSection: section });
+    sectionLines.forEach((item) => {
+      const label = item.name.split("|")[1];
+      lines.push({
+        id: `cf-${section}-${label}`,
+        label,
+        amount: item.value,
+        level: 1,
+        kind: "line",
+        cashFlowSection: section,
+        cashFlowLine: label
+      });
+    });
+  });
+  const netMovement = cashRows.reduce((sum, row) => sum + row.amount, 0);
+  lines.push({ id: "cf-net-movement", label: "Net cash movement", amount: netMovement, level: 0, kind: "subtotal", cashFlowSection: "Cash" });
+  return lines;
+}
+
+function cashBalanceThrough(rows, month) {
+  return cumulativeRows(rows, month)
+    .filter((row) => row.cashFlowSection === "Cash")
+    .reduce((sum, row) => sum + row.presentationAmount, 0);
+}
+
+function comparativeCashFlowLines(rows) {
+  const sets = comparisonSets(rows);
+  const currentLines = cashFlowRows(sets.current);
+  const priorYearLines = cashFlowRows(sets.priorYearRows);
+  const priorMonthLines = cashFlowRows(sets.priorMonthRows);
+  const secondPriorMonthLines = cashFlowRows(sets.secondPriorMonthRows);
+  const openingCash = cashBalanceThrough(rows, addMonths(sets.currentMonth, -1));
+  const priorOpeningCash = cashBalanceThrough(rows, addMonths(sets.priorYear, -1));
+  const priorMonthOpeningCash = cashBalanceThrough(rows, addMonths(sets.priorMonth, -1));
+  const secondPriorMonthOpeningCash = cashBalanceThrough(rows, addMonths(sets.secondPriorMonth, -1));
+  const netMovement = lineAmount(currentLines, "cf-net-movement");
+  const priorNetMovement = lineAmount(priorYearLines, "cf-net-movement");
+  const priorMonthNetMovement = lineAmount(priorMonthLines, "cf-net-movement");
+  const secondPriorMonthNetMovement = lineAmount(secondPriorMonthLines, "cf-net-movement");
+  const baseLines = [
+    { id: "cf-opening-cash", label: "Opening cash balance", amount: openingCash, level: 0, kind: "section" },
+    ...currentLines,
+    { id: "cf-closing-cash", label: "Closing cash balance", amount: openingCash + netMovement, level: 0, kind: "subtotal" }
+  ];
+  return baseLines.map((line) => {
+    const priorYear =
+      line.id === "cf-opening-cash" ? priorOpeningCash :
+      line.id === "cf-closing-cash" ? priorOpeningCash + priorNetMovement :
+      lineAmount(priorYearLines, line.id);
+    const priorMonth =
+      line.id === "cf-opening-cash" ? priorMonthOpeningCash :
+      line.id === "cf-closing-cash" ? priorMonthOpeningCash + priorMonthNetMovement :
+      lineAmount(priorMonthLines, line.id);
+    const secondPriorMonth =
+      line.id === "cf-opening-cash" ? secondPriorMonthOpeningCash :
+      line.id === "cf-closing-cash" ? secondPriorMonthOpeningCash + secondPriorMonthNetMovement :
+      lineAmount(secondPriorMonthLines, line.id);
+    return {
+      ...line,
+      current: line.amount,
+      priorYear,
+      priorMonth,
+      secondPriorMonth,
+      varianceYear: varianceAmount(line.amount, priorYear),
+      varianceMonth: varianceAmount(line.amount, priorMonth)
+    };
+  });
 }
 
 function kpi(label, value, meta, tone) {
@@ -935,6 +1230,26 @@ function uploadPicker(kind, label) {
     </label>`;
 }
 
+function periodControls() {
+  if (!state.dataLoaded) return "";
+  ensureReportingPeriod();
+  return `
+    <label class="period-select">
+      <span>Report month</span>
+      <select data-report-period>
+        ${state.options.months.map((month) => `<option value="${month}" ${state.reporting.period === month ? "selected" : ""}>${escapeHtml(periodLabel(month))}</option>`).join("")}
+      </select>
+    </label>
+    <label class="period-select">
+      <span>Compare</span>
+      <select data-comparison-mode>
+        <option value="prior-year" ${state.reporting.comparisonMode === "prior-year" ? "selected" : ""}>Prior year</option>
+        <option value="prior-month" ${state.reporting.comparisonMode === "prior-month" ? "selected" : ""}>Prior month</option>
+        <option value="two-prior-months" ${state.reporting.comparisonMode === "two-prior-months" ? "selected" : ""}>Two prior months</option>
+      </select>
+    </label>`;
+}
+
 function header() {
   return `
     <header class="top">
@@ -957,6 +1272,7 @@ function header() {
           .join("")}
       </nav>
       <div class="filters">
+        ${periodControls()}
         <label class="search">${icon("search")}<input data-search value="${escapeHtml(state.filters.search)}" placeholder="Search ledger, account, description"></label>
         ${filterMenu("months", "Month", state.options.months, state.filters.months)}
         ${filterMenu("categories", "Category", state.options.categories, state.filters.categories)}
@@ -977,10 +1293,6 @@ function header() {
         ${uploadPicker("transactions", "Transactions CSV")}
         <button class="download-button" data-refresh-from-upload>Generate report</button>
         <button class="download-button secondary" data-export-report-data>Download report file</button>
-        <div class="example-actions">
-          <button class="example-btn example-one" data-load-example="simple"><strong>Load Example Dataset 1</strong><span>Basic sample</span></button>
-          <button class="example-btn example-two" data-load-example="rich"><strong>Load Example Dataset 2</strong><span>Expanded sample</span></button>
-        </div>
       </section>
     </header>`;
 }
@@ -1150,9 +1462,11 @@ function drilldown(rows) {
 }
 
 function insightPanel(rows) {
-  const m = metrics(rows);
+  const sets = comparisonSets(rows);
+  const m = metrics(sets.current);
+  const balanceMetrics = metrics(sets.cumulativeCurrent);
   const topExpense = groupSum(
-    rows.filter((row) => row.category === "Expenses"),
+    sets.current.filter((row) => row.category === "Expenses"),
     (row) => row.accountName
   )[0];
   const insights = [
@@ -1162,7 +1476,7 @@ function insightPanel(rows) {
         ? `Gross margin is ${pct.format(m.grossMargin)}, but opex is absorbing ${pct.format(m.opex / Math.max(m.revenue, 1))} of revenue.`
         : `The selected period is operating-profit positive with ${pct.format(m.ebitMargin)} operating margin.`
     ],
-    ["Liquidity", `Current ratio is ${m.currentRatio.toFixed(2)} with working capital of ${fmtMoney(m.workingCapital)}.`],
+    ["Liquidity", `Current ratio is ${balanceMetrics.currentRatio.toFixed(2)} with working capital of ${fmtMoney(balanceMetrics.workingCapital)} through ${periodLabel(sets.currentMonth)}.`],
     [
       "Cost pressure",
       topExpense
@@ -1198,6 +1512,43 @@ function enhancedStatementTable(lines, options = {}) {
           </button>`;
       })
       .join("")}
+  </div>`;
+}
+
+function comparativeStatementTable(lines, options = {}) {
+  const sets = comparisonSets(applyFilters());
+  const percentLabel = options.percentLabel ?? "%";
+  const showPriorMonths = options.showPriorMonths ?? true;
+  const tableClass = showPriorMonths ? (options.commonSize ? "" : "compact-columns") : "no-prior-months";
+  return `<div class="statement-scroll">
+    <div class="statement comparative-statement">
+      <div class="statement-head comparative ${tableClass}">
+        <span>Line item</span>
+        <span>${escapeHtml(periodLabel(sets.currentMonth))}</span>
+        <span>${escapeHtml(periodLabel(sets.priorYear))}</span>
+        ${showPriorMonths ? `<span>${escapeHtml(periodLabel(sets.priorMonth))}</span>` : ""}
+        ${showPriorMonths ? `<span>${escapeHtml(periodLabel(sets.secondPriorMonth))}</span>` : ""}
+        <span>YoY variance</span>
+        ${showPriorMonths ? "<span>MoM variance</span>" : ""}
+        ${options.commonSize ? `<span>${escapeHtml(percentLabel)}</span>` : ""}
+      </div>
+      ${lines
+        .map((line) => {
+          const active = state.drillTarget?.label === line.label;
+          return `
+            <button class="statement-row comparative ${tableClass} ${line.kind} ${active ? "active" : ""}" data-statement='${escapeHtml(JSON.stringify(line))}' style="padding-left:${14 + line.level * 24}px">
+              <span>${line.level > 0 ? "> " : ""}${escapeHtml(line.label)}</span>
+              <strong>${fmtMoney(line.current)}</strong>
+              <strong>${fmtMoney(line.priorYear)}</strong>
+              ${showPriorMonths ? `<strong>${fmtMoney(line.priorMonth ?? 0)}</strong>` : ""}
+              ${showPriorMonths ? `<strong>${fmtMoney(line.secondPriorMonth ?? 0)}</strong>` : ""}
+              <strong class="${line.varianceYear < 0 ? "negative" : ""}">${fmtVariance(line.current, line.priorYear)}</strong>
+              ${showPriorMonths ? `<strong class="${line.varianceMonth < 0 ? "negative" : ""}">${fmtVariance(line.current, line.priorMonth ?? 0)}</strong>` : ""}
+              ${options.commonSize ? `<em>${pct.format(line.commonSize ?? 0)}</em>` : ""}
+            </button>`;
+        })
+        .join("")}
+    </div>
   </div>`;
 }
 
@@ -1295,10 +1646,31 @@ function varianceCards(rows) {
   </section>`;
 }
 
+function comparativeKpis(rows) {
+  const sets = comparisonSets(rows);
+  const current = metrics(sets.current);
+  const priorYear = metrics(sets.priorYearRows);
+  const priorMonth = metrics(sets.priorMonthRows);
+  const currentCash = lineAmount(cashFlowRows(sets.current), "cf-net-movement");
+  const priorCash = lineAmount(cashFlowRows(sets.priorYearRows), "cf-net-movement");
+  const cards = [
+    ["Revenue YoY", fmtVariance(current.revenue, priorYear.revenue), `${periodLabel(sets.currentMonth)} vs ${periodLabel(sets.priorYear)}`, current.revenue >= priorYear.revenue ? "good" : "warn"],
+    ["Operating Result YoY", fmtVariance(current.ebit, priorYear.ebit), "same month prior year", current.ebit >= priorYear.ebit ? "good" : "bad"],
+    ["Revenue MoM", fmtVariance(current.revenue, priorMonth.revenue), `${periodLabel(sets.priorMonth)} comparison`, current.revenue >= priorMonth.revenue ? "good" : "warn"],
+    ["Cash Movement YoY", fmtVariance(currentCash, priorCash), "cash flow movement", currentCash >= priorCash ? "good" : "warn"]
+  ];
+  return `<section class="comparative-kpis">
+    ${cards.map(([label, value, meta, tone]) => kpi(label, value, meta, tone)).join("")}
+  </section>`;
+}
+
 function overview(rows) {
-  const m = metrics(rows);
-  const mix = groupSum(rows, (row) => row.category);
+  const sets = comparisonSets(rows);
+  const m = metrics(sets.current);
+  const balanceMetrics = metrics(sets.cumulativeCurrent);
+  const mix = groupSum(sets.current, (row) => row.category);
   return `${pageNarrative("overview", rows)}
+  ${comparativeKpis(rows)}
   ${exceptionCards(rows)}
   <div class="grid">
     <section class="chart">
@@ -1309,14 +1681,14 @@ function overview(rows) {
       <div class="section-title"><h2>${icon("bars")} Statement Mix</h2></div>
       ${pieChart(mix, "category")}
     </section>
-    ${profitBridge(rows)}
+    ${profitBridge(sets.current)}
     ${varianceCards(rows)}
     <section>
       <div class="ratio-strip">
         <div><span>Gross Margin</span><strong>${pct.format(m.grossMargin)}</strong></div>
         <div><span>Operating Margin</span><strong class="${m.ebit < 0 ? "negative" : ""}">${pct.format(m.ebitMargin)}</strong></div>
-        <div><span>Current Ratio</span><strong>${m.currentRatio.toFixed(2)}</strong></div>
-        <div><span>Debt / Equity</span><strong>${m.debtToEquity.toFixed(2)}</strong></div>
+        <div><span>Current Ratio</span><strong>${balanceMetrics.currentRatio.toFixed(2)}</strong></div>
+        <div><span>Debt / Equity</span><strong>${balanceMetrics.debtToEquity.toFixed(2)}</strong></div>
       </div>
     </section>
     ${insightPanel(rows)}
@@ -1325,20 +1697,22 @@ function overview(rows) {
 }
 
 function pnlView(rows) {
-  const m = metrics(rows);
+  const sets = comparisonSets(rows);
+  const currentMetrics = metrics(sets.current);
   return `${pageNarrative("pnl", rows)}
   <div class="split">
     <section>
-      <div class="section-title"><h2>${icon("receipt")} Income Statement</h2></div>
-      ${enhancedStatementTable(buildPnl(rows), { denominator: m.revenue, percentLabel: "% revenue" })}
+      <div class="section-title"><h2>${icon("receipt")} Comparative Income Statement</h2><p>${periodLabel(sets.currentMonth)} vs prior periods</p><button class="download-button small" data-export-statement="pnl">${icon("download")} Export</button></div>
+      ${comparativeStatementTable(comparativeLines(buildPnl, rows, { denominator: currentMetrics.revenue }), { commonSize: true, percentLabel: "% revenue" })}
     </section>
     ${enhancedDrilldown(rows)}
   </div>
-  ${profitBridge(rows)}`;
+  ${profitBridge(sets.current)}`;
 }
 
 function balanceView(rows) {
-  const m = metrics(rows);
+  const sets = comparisonSets(rows);
+  const m = metrics(sets.cumulativeCurrent);
   const data = [
     { name: "Assets", value: m.assets },
     { name: "Liabilities", value: m.liabilities },
@@ -1347,8 +1721,8 @@ function balanceView(rows) {
   return `${pageNarrative("balance", rows)}
   <div class="split">
     <section>
-      <div class="section-title"><h2>${icon("landmark")} Balance Sheet</h2></div>
-      ${enhancedStatementTable(buildBalance(rows), { denominator: m.assets, percentLabel: "% assets" })}
+      <div class="section-title"><h2>${icon("landmark")} Comparative Balance Sheet</h2><p>Cumulative through ${periodLabel(sets.currentMonth)}</p><button class="download-button small" data-export-statement="balance">${icon("download")} Export</button></div>
+      ${comparativeStatementTable(comparativeBalanceLines(rows), { commonSize: true, percentLabel: "% assets", showPriorMonths: false })}
     </section>
     <section class="chart">
       <div class="section-title"><h2>${icon("bars")} Capital Structure</h2></div>
@@ -1358,8 +1732,26 @@ function balanceView(rows) {
   ${enhancedDrilldown(rows)}`;
 }
 
+function cashFlowView(rows) {
+  const sets = comparisonSets(rows);
+  return `${pageNarrative("cashflow", rows)}
+  <div class="split">
+    <section>
+      <div class="section-title"><h2>${icon("wallet")} Comparative Cash Flow</h2><p>${periodLabel(sets.currentMonth)} cash movement</p><button class="download-button small" data-export-statement="cashflow">${icon("download")} Export</button></div>
+      ${comparativeStatementTable(comparativeCashFlowLines(rows), { showPriorMonths: true })}
+    </section>
+    ${enhancedDrilldown(rows)}
+  </div>
+  <section class="insights">
+    <div class="section-title"><h2>${icon("shield")} Cash Flow Basis</h2></div>
+    <div class="insight"><strong>Classification</strong><p>Uses optional CashFlowSection and CashFlowLine columns where present, with inferred lines for older chart-of-account files.</p></div>
+    <div class="insight"><strong>Reconciliation</strong><p>Opening cash plus net cash movement should equal closing cash for the selected period.</p></div>
+  </section>`;
+}
+
 function cashView(rows) {
-  const m = metrics(rows);
+  const sets = comparisonSets(rows);
+  const m = metrics(sets.cumulativeCurrent);
   const cashSeries = monthlySeries(rows).map((row) => ({ name: row.month, value: row.cash }));
   const variance = monthlyVariance(rows);
   return `${pageNarrative("cash", rows)}
@@ -1379,14 +1771,16 @@ function cashView(rows) {
 }
 
 function ratiosView(rows) {
-  const m = metrics(rows);
+  const sets = comparisonSets(rows);
+  const m = metrics(sets.current);
+  const balanceMetrics = metrics(sets.cumulativeCurrent);
   const ratios = [
     ["Gross Margin", pct.format(m.grossMargin)],
     ["Operating Margin", pct.format(m.ebitMargin)],
     ["COGS / Revenue", pct.format(m.cogs / Math.max(m.revenue, 1))],
     ["Opex / Revenue", pct.format(m.opex / Math.max(m.revenue, 1))],
-    ["Current Ratio", m.currentRatio.toFixed(2)],
-    ["Debt / Equity", m.debtToEquity.toFixed(2)]
+    ["Current Ratio", balanceMetrics.currentRatio.toFixed(2)],
+    ["Debt / Equity", balanceMetrics.debtToEquity.toFixed(2)]
   ];
   return `${pageNarrative("ratios", rows)}
   <section>
@@ -1441,7 +1835,7 @@ function emptyState() {
   return `<main>
     <section class="empty-report">
       <strong>Upload CSVs to generate the financial statements</strong>
-      <p>No report data is loaded yet. Select your own CSV files, or use one of the example datasets to explore the dashboard.</p>
+      <p>No report data is loaded yet. Select your chart of accounts and transactions CSV files to generate the dashboard.</p>
       ${state.uploadError ? `<p class="upload-error">${escapeHtml(state.uploadError)}</p>` : ""}
       ${state.uploadNotice ? `<p class="upload-notice">${escapeHtml(state.uploadNotice)}</p>` : ""}
       <div class="empty-upload-grid">
@@ -1450,12 +1844,10 @@ function emptyState() {
       </div>
       <div class="empty-actions">
         <button class="download-button" data-refresh-from-upload>Generate report</button>
-        <button class="example-btn example-one" data-load-example="simple"><strong>Load Example Dataset 1</strong><span>Basic sample</span></button>
-        <button class="example-btn example-two" data-load-example="rich"><strong>Load Example Dataset 2</strong><span>Expanded sample</span></button>
       </div>
       <div class="empty-steps">
         <div><span>1</span><p>Choose the Chart of Accounts CSV and Transactions CSV in either order.</p></div>
-        <div><span>2</span><p>Use either example dataset to explore the same upload format.</p></div>
+        <div><span>2</span><p>Generate the report in the browser after both files are selected.</p></div>
         <div><span>3</span><p>Generate the report. Uploaded data is processed only on this page.</p></div>
       </div>
     </section>
@@ -1464,12 +1856,15 @@ function emptyState() {
 
 function body(rows) {
   if (!state.dataLoaded) return emptyState();
-  const m = metrics(rows);
+  ensureReportingPeriod();
+  const sets = comparisonSets(rows);
+  const m = metrics(sets.current);
   const checks = integrityChecks();
   const content = {
     overview: overview,
     pnl: pnlView,
     balance: balanceView,
+    cashflow: cashFlowView,
     cash: cashView,
     ratios: ratiosView,
     expenses: expensesView,
@@ -1481,7 +1876,7 @@ function body(rows) {
       ${kpi("Revenue", fmtMoney(m.revenue), `${m.transactions} journal entries`, "good")}
       ${kpi("Gross Profit", fmtMoney(m.grossProfit), `${pct.format(m.grossMargin)} gross margin`, "neutral")}
       ${kpi("Operating Result", fmtMoney(m.ebit), `${pct.format(m.ebitMargin)} operating margin`, m.ebit >= 0 ? "good" : "bad")}
-      ${kpi("Current Ratio", m.currentRatio.toFixed(2), `${fmtMoney(m.workingCapital)} working capital`, m.currentRatio >= 1.2 ? "good" : "warn")}
+      ${kpi("Current Ratio", metrics(sets.cumulativeCurrent).currentRatio.toFixed(2), `${fmtMoney(metrics(sets.cumulativeCurrent).workingCapital)} working capital`, metrics(sets.cumulativeCurrent).currentRatio >= 1.2 ? "good" : "warn")}
     </section>
     <section class="quality">
       <span>Integrity</span>
@@ -1521,6 +1916,15 @@ function exportDrilldown() {
   downloadRows(byDrillTarget(applyFilters()), "fs-report-selected-drilldown.csv");
 }
 
+function exportComparativeStatement(kind) {
+  const rows = applyFilters();
+  const statementRows =
+    kind === "balance" ? comparativeBalanceLines(rows) :
+    kind === "cashflow" ? comparativeCashFlowLines(rows) :
+    comparativeLines(buildPnl, rows, { denominator: metrics(comparisonSets(rows).current).revenue });
+  downloadStatementRows(statementRows, `fs-report-comparative-${kind}.csv`);
+}
+
 function downloadJson(data, filename) {
   const blob = new Blob([`${JSON.stringify(data, null, 2)}\n`], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -1554,6 +1958,8 @@ function currentReportData() {
       type: row.type,
       amount: row.amount,
       description: row.description,
+      cashFlowSection: row.cashFlowSection,
+      cashFlowLine: row.cashFlowLine,
       sourceLineCount: row.sourceLineCount ?? 1
     }))
   };
@@ -1604,46 +2010,50 @@ async function refreshFromUpload() {
   }
 }
 
-async function loadExample(kind) {
-  try {
-    state.uploadError = "";
-    state.uploadNotice = "";
-    const files =
-      kind === "rich"
-        ? ["./Test_ChartOfAccounts.csv", "./Test_Transactions.csv"]
-        : ["./ChartOfAccounts.csv", "./Transactions.csv"];
-    const [accountsRaw, transactionsRaw] = await Promise.all(
-      files.map((file) =>
-        fetch(file, { cache: "no-store" }).then((response) => {
-          if (!response.ok) throw new Error(`Could not load ${file}.`);
-          return response.text();
-        })
-      )
-    );
-    state.uploadedFiles = {
-      accountsRaw,
-      accountsName: files[0].replace("./", ""),
-      transactionsRaw,
-      transactionsName: files[1].replace("./", "")
-    };
-    const reportData = buildReportDataFromCsv(accountsRaw, transactionsRaw);
-    loadReportData(reportData);
-    resetViewState();
-    state.uploadOpen = false;
-    render();
-  } catch (error) {
-    state.uploadError = error.message;
-    state.uploadOpen = true;
-    render();
-  }
-}
-
 function downloadRows(rows, filename) {
   const headers = ["Date", "ReportRowID", "AccountNumber", "AccountName", "Category", "ActivitySummary", "Amount"];
   const csv = [
     headers.join(","),
     ...rows.map((row) =>
       [row.dateLabel, row.transactionId, row.accountNumber, row.accountName, row.category, row.description, row.presentationAmount]
+        .map((value) => `"${String(value).replaceAll('"', '""')}"`)
+        .join(",")
+    )
+  ].join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadStatementRows(rows, filename) {
+  const sets = comparisonSets(applyFilters());
+  const headers = [
+    "LineItem",
+    periodLabel(sets.currentMonth),
+    periodLabel(sets.priorYear),
+    periodLabel(sets.priorMonth),
+    periodLabel(sets.secondPriorMonth),
+    "VarianceVsPriorYear",
+    "VarianceVsPriorMonth",
+    "CommonSize"
+  ];
+  const csv = [
+    headers.join(","),
+    ...rows.map((row) =>
+      [
+        row.label,
+        row.current ?? row.amount ?? 0,
+        row.priorYear ?? 0,
+        row.priorMonth ?? "",
+        row.secondPriorMonth ?? "",
+        row.varianceYear ?? "",
+        row.varianceMonth ?? "",
+        row.commonSize ?? ""
+      ]
         .map((value) => `"${String(value).replaceAll('"', '""')}"`)
         .join(",")
     )
@@ -1671,6 +2081,16 @@ function bindEvents() {
     state.drillTarget = null;
     window.clearTimeout(searchTimer);
     searchTimer = window.setTimeout(render, 220);
+  });
+  document.querySelector("[data-report-period]")?.addEventListener("change", (event) => {
+    state.reporting.period = event.target.value;
+    state.drillTarget = null;
+    render();
+  });
+  document.querySelector("[data-comparison-mode]")?.addEventListener("change", (event) => {
+    state.reporting.comparisonMode = event.target.value;
+    state.drillTarget = null;
+    render();
   });
   document.querySelectorAll("[data-open-filter]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1700,9 +2120,6 @@ function bindEvents() {
     } else {
       focusUploadPanel(false);
     }
-  });
-  document.querySelectorAll("[data-load-example]").forEach((button) => {
-    button.addEventListener("click", () => loadExample(button.dataset.loadExample));
   });
   document.querySelectorAll("[data-coa-file]").forEach((input) => input.addEventListener("change", async (event) => {
     try {
@@ -1749,7 +2166,10 @@ function bindEvents() {
         category: line.category,
         subcategory: line.subcategory,
         detailGroup: line.detailGroup,
-        accountNumber: line.accountNumber
+        accountNumber: line.accountNumber,
+        cashFlowSection: line.cashFlowSection,
+        cashFlowLine: line.cashFlowLine,
+        month: state.reporting.period
       });
     });
   });
@@ -1784,6 +2204,9 @@ function bindEvents() {
   });
   document.querySelector("[data-export]")?.addEventListener("click", exportLedger);
   document.querySelector("[data-export-drill]")?.addEventListener("click", exportDrilldown);
+  document.querySelectorAll("[data-export-statement]").forEach((button) => {
+    button.addEventListener("click", () => exportComparativeStatement(button.dataset.exportStatement));
+  });
   document.querySelectorAll("[data-exception-view]").forEach((button) => {
     button.addEventListener("click", () => {
       state.view = button.dataset.exceptionView;

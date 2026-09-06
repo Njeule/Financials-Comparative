@@ -48,19 +48,55 @@ const monthStartLabel = (month) => `01/${month.slice(5, 7)}/${month.slice(0, 4)}
 const readableMonth = (month) =>
   new Date(`${month}-01T00:00:00`).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
 
-const accountsRaw = await readFile("ChartOfAccounts.csv", "utf8");
-const transactionsRaw = await readFile("Transactions.csv", "utf8");
+const inferCashFlowSection = (account) => {
+  const text = `${account.accountName} ${account.subcategory} ${account.detailGroup}`.toLowerCase();
+  if (account.detailGroup === "Cash & Cash Equivalents") return "Cash";
+  if (text.includes("depreciation") || text.includes("amortization")) return "NonCash";
+  if (text.includes("capitalized") || text.includes("equipment") || text.includes("fixtures") || text.includes("development")) return "Investing";
+  if (text.includes("loan") || text.includes("borrow") || account.category === "Equity") return "Financing";
+  return "Operating";
+};
 
-const accounts = parseObjects(accountsRaw).map((row) => ({
-  accountKey: row.AccountKey,
-  accountNumber: row.AccountNumber,
-  accountName: row.AccountName,
-  category: row.Category_L1,
-  subcategory: row.Subcategory_L2,
-  detailGroup: row.DetailGroup_L3,
-  region: row.Region,
-  department: row.Department
-}));
+const inferCashFlowLine = (account) => {
+  const text = `${account.accountName} ${account.subcategory} ${account.detailGroup}`.toLowerCase();
+  if (account.detailGroup === "Cash & Cash Equivalents") return "Cash accounts";
+  if (account.category === "Revenue") return "Customer receipts and revenue activity";
+  if (text.includes("payroll") || text.includes("salaries")) return "Payroll and people costs";
+  if (text.includes("tax")) return "Tax payments and accruals";
+  if (text.includes("interest")) return "Interest paid or received";
+  if (text.includes("inventory")) return "Inventory and supplier payments";
+  if (text.includes("capitalized") || text.includes("development")) return "Capitalized development";
+  if (text.includes("equipment") || text.includes("fixtures")) return "Capital expenditure";
+  if (text.includes("loan") || text.includes("borrow")) return "Loan proceeds and repayments";
+  if (account.category === "Equity") return "Equity financing";
+  if (account.category === "Expenses") return "Operating supplier payments";
+  return "Working capital movement";
+};
+
+const normalizeAccount = (row) => {
+  const account = {
+    accountKey: row.AccountKey,
+    accountNumber: row.AccountNumber,
+    accountName: row.AccountName,
+    category: row.Category_L1,
+    subcategory: row.Subcategory_L2,
+    detailGroup: row.DetailGroup_L3,
+    region: row.Region,
+    department: row.Department,
+    normalBalance: row.NormalBalance || "",
+    cashFlowSection: row.CashFlowSection || "",
+    cashFlowLine: row.CashFlowLine || ""
+  };
+  account.cashFlowSection ||= inferCashFlowSection(account);
+  account.cashFlowLine ||= inferCashFlowLine(account);
+  return account;
+};
+
+const [accountsPath = "ChartOfAccounts.csv", transactionsPath = "Transactions.csv", outputPath = "report-data.json"] = process.argv.slice(2);
+const accountsRaw = await readFile(accountsPath, "utf8");
+const transactionsRaw = await readFile(transactionsPath, "utf8");
+
+const accounts = parseObjects(accountsRaw).map(normalizeAccount);
 
 const accountMap = new Map(accounts.map((account) => [account.accountNumber, account]));
 const transactionRows = parseObjects(transactionsRaw);
@@ -151,5 +187,5 @@ const reportData = {
   ledger: summarizedLedger
 };
 
-await writeFile("report-data.json", `${JSON.stringify(reportData, null, 2)}\n`);
-console.log(`Generated report-data.json with ${summarizedLedger.length} summarized ledger rows from ${sourceLedger.length} source rows.`);
+await writeFile(outputPath, `${JSON.stringify(reportData, null, 2)}\n`);
+console.log(`Generated ${outputPath} with ${summarizedLedger.length} summarized ledger rows from ${sourceLedger.length} source rows.`);

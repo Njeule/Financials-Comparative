@@ -1,0 +1,253 @@
+AccountKey,AccountNumber,AccountName,Category_L1,Subcategory_L2,DetailGroup_L3,Region,Department,CashFlowSection,CashFlowLine,NormalBalance
+1010-GEN,101000,Petty Cash,Assets,Current Assets,Cash & Cash Equivalents,Global,Corporate/HQ,Cash,Cash accounts,Debit
+1020-US,102001,Operating Bank Account - USD (United States),Assets,Current Assets,Cash & Cash Equivalents,United States,Finance & Legal,Cash,Cash accounts,Debit
+1020-CA,102002,Operating Bank Account - USD (Canada),Assets,Current Assets,Cash & Cash Equivalents,Canada,Finance & Legal,Cash,Cash accounts,Debit
+1020-UK,102003,Operating Bank Account - USD (United Kingdom),Assets,Current Assets,Cash & Cash Equivalents,United Kingdom,Finance & Legal,Cash,Cash accounts,Debit
+1020-EU,102004,Operating Bank Account - USD (Europe (Eurozone)),Assets,Current Assets,Cash & Cash Equivalents,Europe (Eurozone),Finance & Legal,Cash,Cash accounts,Debit
+1020-APAC,102005,Operating Bank Account - USD (Asia Pacific),Assets,Current Assets,Cash & Cash Equivalents,Asia Pacific,Finance & Legal,Cash,Cash accounts,Debit
+1030-GEN,103000,Savings Account - EUR,Assets,Current Assets,Cash & Cash Equivalents,Global,Corporate/HQ,Cash,Cash accounts,Debit
+1040-GEN,104000,Short-term Investments,Assets,Current Assets,Marketable Securities,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1100-GEN,110000,Accounts Receivable - Trade,Assets,Current Assets,Receivables,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1110-GEN,111000,Allowance for Doubtful Accounts,Assets,Current Assets,Receivables,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1150-GEN,115000,Other Receivables,Assets,Current Assets,Receivables,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1200-GEN,120000,Inventory - Raw Materials,Assets,Current Assets,Inventory,Global,Corporate/HQ,Operating,Inventory and supplier payments,Debit
+1210-GEN,121000,Inventory - Work in Progress,Assets,Current Assets,Inventory,Global,Corporate/HQ,Operating,Inventory and supplier payments,Debit
+1220-GEN,122000,Inventory - Finished Goods,Assets,Current Assets,Inventory,Global,Corporate/HQ,Operating,Inventory and supplier payments,Debit
+1230-GEN,123000,Inventory Provision - Obsolescence,Assets,Current Assets,Inventory,Global,Corporate/HQ,Operating,Inventory and supplier payments,Debit
+1300-GEN,130000,Prepaid Expenses - Rent,Assets,Current Assets,Prepaid Expenses,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1310-GEN,131000,Prepaid Expenses - Insurance,Assets,Current Assets,Prepaid Expenses,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1320-GEN,132000,Prepaid Software Subscriptions,Assets,Current Assets,Prepaid Expenses,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1400-GEN,140000,Advance Payments to Suppliers,Assets,Current Assets,Prepaid Expenses,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1510-GEN,151000,Land,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,Investing,Capital expenditure,Debit
+1520-GEN,152000,Buildings & Improvements,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,Investing,Capital expenditure,Debit
+1525-GEN,152500,Accumulated Depreciation - Buildings,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,NonCash,Capital expenditure,Debit
+1530-GEN,153000,Machinery & Production Equipment,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,Investing,Capital expenditure,Debit
+1535-GEN,153500,Accumulated Depreciation - Machinery,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,NonCash,Capital expenditure,Debit
+1540-GEN,154000,Office Equipment & Furniture,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,Investing,Capital expenditure,Debit
+1545-GEN,154500,Accumulated Depreciation - Office Equipment,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,NonCash,Capital expenditure,Debit
+1550-GEN,155000,Computer Hardware & IT Infrastructure,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,Investing,Capital expenditure,Debit
+1555-GEN,155500,Accumulated Depreciation - IT Hardware,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,NonCash,Capital expenditure,Debit
+1560-GEN,156000,Company Vehicles,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,Investing,Capital expenditure,Debit
+1565-GEN,156500,Accumulated Depreciation - Vehicles,Assets,Non-Current Assets,"Property, Plant & Equipment",Global,Corporate/HQ,NonCash,Capital expenditure,Debit
+1710-GEN,171000,Goodwill,Assets,Non-Current Assets,Intangible Assets,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1720-GEN,172000,Patents & Trademarks,Assets,Non-Current Assets,Intangible Assets,Global,Corporate/HQ,Operating,Working capital movement,Debit
+1725-GEN,172500,Accumulated Amortization - Intangibles,Assets,Non-Current Assets,Intangible Assets,Global,Corporate/HQ,NonCash,Working capital movement,Debit
+1810-GEN,181000,Security Deposits for Leases,Assets,Non-Current Assets,Other Long-term Assets,Global,Corporate/HQ,Operating,Working capital movement,Debit
+2010-GEN,201000,Accounts Payable - Trade,Liabilities,Current Liabilities,Payables,Global,Corporate/HQ,Operating,Working capital movement,Credit
+2020-GEN,202000,Accrued Liabilities - Utilities,Liabilities,Current Liabilities,Accrued Expenses,Global,Corporate/HQ,Operating,Working capital movement,Credit
+2030-GEN,203000,Accrued Professional Fees,Liabilities,Current Liabilities,Accrued Expenses,Global,Corporate/HQ,Operating,Working capital movement,Credit
+2100-GEN,210000,Salaries and Wages Payable,Liabilities,Current Liabilities,Payroll Liabilities,Global,Corporate/HQ,Operating,Payroll and people costs,Credit
+2110-GEN,211000,Employee Benefits Payable,Liabilities,Current Liabilities,Payroll Liabilities,Global,Corporate/HQ,Operating,Payroll and people costs,Credit
+2120-GEN,212000,Payroll Taxes Payable,Liabilities,Current Liabilities,Payroll Liabilities,Global,Corporate/HQ,Operating,Payroll and people costs,Credit
+2200-GEN,220000,Sales Tax Payable (VAT/GST),Liabilities,Current Liabilities,Tax Liabilities,Global,Corporate/HQ,Operating,Tax payments and accruals,Credit
+2210-GEN,221000,Corporate Income Tax Payable,Liabilities,Current Liabilities,Tax Liabilities,Global,Corporate/HQ,Operating,Tax payments and accruals,Credit
+2300-GEN,230000,Short-term Bank Loans,Liabilities,Current Liabilities,Short-term Debt,Global,Corporate/HQ,Financing,Loan proceeds and repayments,Credit
+2310-GEN,231000,Current Portion of Long-term Debt,Liabilities,Current Liabilities,Short-term Debt,Global,Corporate/HQ,Operating,Working capital movement,Credit
+2400-GEN,240000,Deferred / Unearned Revenue,Liabilities,Current Liabilities,Deferred Revenue,Global,Corporate/HQ,Operating,Working capital movement,Credit
+2510-GEN,251000,Long-term Bank Loans,Liabilities,Non-Current Liabilities,Long-term Debt,Global,Corporate/HQ,Financing,Loan proceeds and repayments,Credit
+2520-GEN,252000,Bonds Payable,Liabilities,Non-Current Liabilities,Long-term Debt,Global,Corporate/HQ,Operating,Working capital movement,Credit
+2600-GEN,260000,Deferred Tax Liabilities,Liabilities,Non-Current Liabilities,Other Long-term Liabilities,Global,Corporate/HQ,Operating,Tax payments and accruals,Credit
+3010-GEN,301000,Common Stock,Equity,Shareholders Equity,Paid-in Capital,Global,Corporate/HQ,Financing,Equity financing,Credit
+3020-GEN,302000,Preferred Stock,Equity,Shareholders Equity,Paid-in Capital,Global,Corporate/HQ,Financing,Equity financing,Credit
+3030-GEN,303000,Additional Paid-in Capital,Equity,Shareholders Equity,Paid-in Capital,Global,Corporate/HQ,Financing,Equity financing,Credit
+3100-GEN,310000,Retained Earnings - Opening Balance,Equity,Shareholders Equity,Retained Earnings,Global,Corporate/HQ,Financing,Equity financing,Credit
+3200-GEN,320000,Current Year Earnings,Equity,Shareholders Equity,Retained Earnings,Global,Corporate/HQ,Financing,Equity financing,Credit
+3300-GEN,330000,Dividends Paid,Equity,Shareholders Equity,Retained Earnings,Global,Corporate/HQ,Financing,Equity financing,Credit
+3400-GEN,340000,Treasury Stock,Equity,Shareholders Equity,Paid-in Capital,Global,Corporate/HQ,Financing,Equity financing,Credit
+3900-GEN,390000,Other Comprehensive Income,Equity,Shareholders Equity,Other Equity,Global,Corporate/HQ,Financing,Equity financing,Credit
+4010-ENT,401000,Product Sales - North America - Enterprise Software,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4010-HAR,401001,Product Sales - North America - Hardware Units,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4010-MAI,401002,Product Sales - North America - Maintenance Contracts,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4020-ENT,402000,Product Sales - Europe - Enterprise Software,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4020-HAR,402001,Product Sales - Europe - Hardware Units,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4020-MAI,402002,Product Sales - Europe - Maintenance Contracts,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4030-ENT,403000,Product Sales - Asia Pacific - Enterprise Software,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4030-HAR,403001,Product Sales - Asia Pacific - Hardware Units,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4030-MAI,403002,Product Sales - Asia Pacific - Maintenance Contracts,Revenue,Operating Revenue,Product Revenue,Segmented,Sales,Operating,Customer receipts and revenue activity,Credit
+4110-GEN,411000,Service Revenue - Consulting,Revenue,Operating Revenue,Service Revenue,Global,Corporate/HQ,Operating,Customer receipts and revenue activity,Credit
+4120-GEN,412000,Service Revenue - Implementation,Revenue,Operating Revenue,Service Revenue,Global,Corporate/HQ,Operating,Customer receipts and revenue activity,Credit
+4210-GEN,421000,SaaS Subscription Revenue,Revenue,Operating Revenue,Subscription Revenue,Global,Corporate/HQ,Operating,Customer receipts and revenue activity,Credit
+4300-GEN,430000,Sales Returns and Allowances,Revenue,Operating Revenue,Revenue Deductions,Global,Corporate/HQ,Operating,Customer receipts and revenue activity,Credit
+4310-GEN,431000,Sales Discounts Offered,Revenue,Operating Revenue,Revenue Deductions,Global,Corporate/HQ,Operating,Customer receipts and revenue activity,Credit
+5010-GEN,501000,COGS - Raw Material Costs,Expenses,Cost of Goods Sold,Direct Material Costs,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+5020-GEN,502000,COGS - Production Labor Wages,Expenses,Cost of Goods Sold,Direct Labor Costs,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+5030-GEN,503000,COGS - Subcontractor Fees,Expenses,Cost of Goods Sold,Direct Labor Costs,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+5110-GEN,511000,Factory Overhead - Utilities,Expenses,Cost of Goods Sold,Factory Overhead,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+5120-GEN,512000,Factory Overhead - Maintenance,Expenses,Cost of Goods Sold,Factory Overhead,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+5130-GEN,513000,Freight-In / Shipping Inbound,Expenses,Cost of Goods Sold,Logistics Costs,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+5200-GEN,520000,Inventory Write-downs & Scrap,Expenses,Cost of Goods Sold,Direct Material Costs,Global,Corporate/HQ,Operating,Inventory and supplier payments,Debit
+6010-10,601010,Salaries - Sales & Marketing Team - Corporate/HQ,Expenses,Operating Expenses,Personnel Expenses,Global,Corporate/HQ,Operating,Payroll and people costs,Debit
+6010-20,601020,Salaries - Sales & Marketing Team - Sales,Expenses,Operating Expenses,Personnel Expenses,Global,Sales,Operating,Payroll and people costs,Debit
+6010-21,601021,Salaries - Sales & Marketing Team - Marketing,Expenses,Operating Expenses,Personnel Expenses,Global,Marketing,Operating,Payroll and people costs,Debit
+6010-30,601030,Salaries - Sales & Marketing Team - Engineering/R&D,Expenses,Operating Expenses,Personnel Expenses,Global,Engineering/R&D,Operating,Payroll and people costs,Debit
+6010-40,601040,Salaries - Sales & Marketing Team - Operations/Logistics,Expenses,Operating Expenses,Personnel Expenses,Global,Operations/Logistics,Operating,Payroll and people costs,Debit
+6010-50,601050,Salaries - Sales & Marketing Team - Customer Support,Expenses,Operating Expenses,Personnel Expenses,Global,Customer Support,Operating,Payroll and people costs,Debit
+6010-60,601060,Salaries - Sales & Marketing Team - Human Resources,Expenses,Operating Expenses,Personnel Expenses,Global,Human Resources,Operating,Payroll and people costs,Debit
+6010-70,601070,Salaries - Sales & Marketing Team - Finance & Legal,Expenses,Operating Expenses,Personnel Expenses,Global,Finance & Legal,Operating,Payroll and people costs,Debit
+6020-10,602010,Salaries - Research & Development - Corporate/HQ,Expenses,Operating Expenses,Personnel Expenses,Global,Corporate/HQ,Investing,Payroll and people costs,Debit
+6020-20,602020,Salaries - Research & Development - Sales,Expenses,Operating Expenses,Personnel Expenses,Global,Sales,Investing,Payroll and people costs,Debit
+6020-21,602021,Salaries - Research & Development - Marketing,Expenses,Operating Expenses,Personnel Expenses,Global,Marketing,Investing,Payroll and people costs,Debit
+6020-30,602030,Salaries - Research & Development - Engineering/R&D,Expenses,Operating Expenses,Personnel Expenses,Global,Engineering/R&D,Investing,Payroll and people costs,Debit
+6020-40,602040,Salaries - Research & Development - Operations/Logistics,Expenses,Operating Expenses,Personnel Expenses,Global,Operations/Logistics,Investing,Payroll and people costs,Debit
+6020-50,602050,Salaries - Research & Development - Customer Support,Expenses,Operating Expenses,Personnel Expenses,Global,Customer Support,Investing,Payroll and people costs,Debit
+6020-60,602060,Salaries - Research & Development - Human Resources,Expenses,Operating Expenses,Personnel Expenses,Global,Human Resources,Investing,Payroll and people costs,Debit
+6020-70,602070,Salaries - Research & Development - Finance & Legal,Expenses,Operating Expenses,Personnel Expenses,Global,Finance & Legal,Investing,Payroll and people costs,Debit
+6030-10,603010,Salaries - General & Administrative - Corporate/HQ,Expenses,Operating Expenses,Personnel Expenses,Global,Corporate/HQ,Operating,Payroll and people costs,Debit
+6030-20,603020,Salaries - General & Administrative - Sales,Expenses,Operating Expenses,Personnel Expenses,Global,Sales,Operating,Payroll and people costs,Debit
+6030-21,603021,Salaries - General & Administrative - Marketing,Expenses,Operating Expenses,Personnel Expenses,Global,Marketing,Operating,Payroll and people costs,Debit
+6030-30,603030,Salaries - General & Administrative - Engineering/R&D,Expenses,Operating Expenses,Personnel Expenses,Global,Engineering/R&D,Operating,Payroll and people costs,Debit
+6030-40,603040,Salaries - General & Administrative - Operations/Logistics,Expenses,Operating Expenses,Personnel Expenses,Global,Operations/Logistics,Operating,Payroll and people costs,Debit
+6030-50,603050,Salaries - General & Administrative - Customer Support,Expenses,Operating Expenses,Personnel Expenses,Global,Customer Support,Operating,Payroll and people costs,Debit
+6030-60,603060,Salaries - General & Administrative - Human Resources,Expenses,Operating Expenses,Personnel Expenses,Global,Human Resources,Operating,Payroll and people costs,Debit
+6030-70,603070,Salaries - General & Administrative - Finance & Legal,Expenses,Operating Expenses,Personnel Expenses,Global,Finance & Legal,Operating,Payroll and people costs,Debit
+6050-GEN,605000,Sales Commissions,Expenses,Operating Expenses,Personnel Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6100-GEN,610000,General Facilities & Overhead,Expenses,Operating Expenses,Facilities & Overhead,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6110-US,611001,Office Rent Expense - United States,Expenses,Operating Expenses,Facilities & Overhead,United States,Shared Services,Operating,Operating supplier payments,Debit
+6110-CA,611002,Office Rent Expense - Canada,Expenses,Operating Expenses,Facilities & Overhead,Canada,Shared Services,Operating,Operating supplier payments,Debit
+6110-UK,611003,Office Rent Expense - United Kingdom,Expenses,Operating Expenses,Facilities & Overhead,United Kingdom,Shared Services,Operating,Operating supplier payments,Debit
+6110-EU,611004,Office Rent Expense - Europe (Eurozone),Expenses,Operating Expenses,Facilities & Overhead,Europe (Eurozone),Shared Services,Operating,Operating supplier payments,Debit
+6110-APAC,611005,Office Rent Expense - Asia Pacific,Expenses,Operating Expenses,Facilities & Overhead,Asia Pacific,Shared Services,Operating,Operating supplier payments,Debit
+6120-US,612001,"Electricity, Water & Utilities - United States",Expenses,Operating Expenses,Facilities & Overhead,United States,Shared Services,Operating,Operating supplier payments,Debit
+6120-CA,612002,"Electricity, Water & Utilities - Canada",Expenses,Operating Expenses,Facilities & Overhead,Canada,Shared Services,Operating,Operating supplier payments,Debit
+6120-UK,612003,"Electricity, Water & Utilities - United Kingdom",Expenses,Operating Expenses,Facilities & Overhead,United Kingdom,Shared Services,Operating,Operating supplier payments,Debit
+6120-EU,612004,"Electricity, Water & Utilities - Europe (Eurozone)",Expenses,Operating Expenses,Facilities & Overhead,Europe (Eurozone),Shared Services,Operating,Operating supplier payments,Debit
+6120-APAC,612005,"Electricity, Water & Utilities - Asia Pacific",Expenses,Operating Expenses,Facilities & Overhead,Asia Pacific,Shared Services,Operating,Operating supplier payments,Debit
+6130-GEN,613000,Office Cleaning & Maintenance,Expenses,Operating Expenses,Facilities & Overhead,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6210-GEN,621000,Digital Advertising & Paid Media,Expenses,Operating Expenses,Marketing & Selling,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6220-GEN,622000,Trade Shows & Event Events,Expenses,Operating Expenses,Marketing & Selling,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6230-GEN,623000,Marketing Agency Fees,Expenses,Operating Expenses,Marketing & Selling,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6310-US,631001,Software Licensing & SaaS Tools - United States,Expenses,Operating Expenses,Technology & IT,United States,Shared Services,Operating,Operating supplier payments,Debit
+6310-CA,631002,Software Licensing & SaaS Tools - Canada,Expenses,Operating Expenses,Technology & IT,Canada,Shared Services,Operating,Operating supplier payments,Debit
+6310-UK,631003,Software Licensing & SaaS Tools - United Kingdom,Expenses,Operating Expenses,Technology & IT,United Kingdom,Shared Services,Operating,Operating supplier payments,Debit
+6310-EU,631004,Software Licensing & SaaS Tools - Europe (Eurozone),Expenses,Operating Expenses,Technology & IT,Europe (Eurozone),Shared Services,Operating,Operating supplier payments,Debit
+6310-APAC,631005,Software Licensing & SaaS Tools - Asia Pacific,Expenses,Operating Expenses,Technology & IT,Asia Pacific,Shared Services,Operating,Operating supplier payments,Debit
+6320-GEN,632000,IT Support & Cloud Hosting Services,Expenses,Operating Expenses,Technology & IT,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6330-GEN,633000,Telecommunications & Internet,Expenses,Operating Expenses,Technology & IT,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6410-US,641001,Travel - Flights & Transport - United States,Expenses,Operating Expenses,Travel & Entertainment,United States,Shared Services,Operating,Operating supplier payments,Debit
+6410-CA,641002,Travel - Flights & Transport - Canada,Expenses,Operating Expenses,Travel & Entertainment,Canada,Shared Services,Operating,Operating supplier payments,Debit
+6410-UK,641003,Travel - Flights & Transport - United Kingdom,Expenses,Operating Expenses,Travel & Entertainment,United Kingdom,Shared Services,Operating,Operating supplier payments,Debit
+6410-EU,641004,Travel - Flights & Transport - Europe (Eurozone),Expenses,Operating Expenses,Travel & Entertainment,Europe (Eurozone),Shared Services,Operating,Operating supplier payments,Debit
+6410-APAC,641005,Travel - Flights & Transport - Asia Pacific,Expenses,Operating Expenses,Travel & Entertainment,Asia Pacific,Shared Services,Operating,Operating supplier payments,Debit
+6420-GEN,642000,Travel - Hotels & Lodging,Expenses,Operating Expenses,Travel & Entertainment,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6430-GEN,643000,Client Entertainment & Meals,Expenses,Operating Expenses,Travel & Entertainment,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6510-GEN,651000,Legal Fees & Regulatory Compliance,Expenses,Operating Expenses,Professional Fees,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6520-GEN,652000,"Accounting, Bookkeeping & Audit",Expenses,Operating Expenses,Professional Fees,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6530-GEN,653000,Management Consulting Fees,Expenses,Operating Expenses,Professional Fees,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6610-GEN,661000,General Office Supplies,Expenses,Operating Expenses,Facilities & Overhead,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6620-GEN,662000,"Postage, Courier & Shipping Outbound",Expenses,Operating Expenses,Facilities & Overhead,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6710-GEN,671000,Business Insurance Policies,Expenses,Operating Expenses,Facilities & Overhead,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6810-GEN,681000,Bad Debt Expense,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6820-GEN,682000,Bank Service Charges & Transaction Fees,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-146,699146,Miscellaneous Operating Expense Line Item variant 146,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-147,699147,Miscellaneous Operating Expense Line Item variant 147,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-148,699148,Miscellaneous Operating Expense Line Item variant 148,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-149,699149,Miscellaneous Operating Expense Line Item variant 149,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-150,699150,Miscellaneous Operating Expense Line Item variant 150,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-151,699151,Miscellaneous Operating Expense Line Item variant 151,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-152,699152,Miscellaneous Operating Expense Line Item variant 152,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-153,699153,Miscellaneous Operating Expense Line Item variant 153,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-154,699154,Miscellaneous Operating Expense Line Item variant 154,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-155,699155,Miscellaneous Operating Expense Line Item variant 155,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-156,699156,Miscellaneous Operating Expense Line Item variant 156,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-157,699157,Miscellaneous Operating Expense Line Item variant 157,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-158,699158,Miscellaneous Operating Expense Line Item variant 158,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-159,699159,Miscellaneous Operating Expense Line Item variant 159,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-160,699160,Miscellaneous Operating Expense Line Item variant 160,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-161,699161,Miscellaneous Operating Expense Line Item variant 161,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-162,699162,Miscellaneous Operating Expense Line Item variant 162,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-163,699163,Miscellaneous Operating Expense Line Item variant 163,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-164,699164,Miscellaneous Operating Expense Line Item variant 164,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-165,699165,Miscellaneous Operating Expense Line Item variant 165,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-166,699166,Miscellaneous Operating Expense Line Item variant 166,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-167,699167,Miscellaneous Operating Expense Line Item variant 167,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-168,699168,Miscellaneous Operating Expense Line Item variant 168,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-169,699169,Miscellaneous Operating Expense Line Item variant 169,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-170,699170,Miscellaneous Operating Expense Line Item variant 170,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-171,699171,Miscellaneous Operating Expense Line Item variant 171,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-172,699172,Miscellaneous Operating Expense Line Item variant 172,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-173,699173,Miscellaneous Operating Expense Line Item variant 173,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-174,699174,Miscellaneous Operating Expense Line Item variant 174,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-175,699175,Miscellaneous Operating Expense Line Item variant 175,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-176,699176,Miscellaneous Operating Expense Line Item variant 176,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-177,699177,Miscellaneous Operating Expense Line Item variant 177,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-178,699178,Miscellaneous Operating Expense Line Item variant 178,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-179,699179,Miscellaneous Operating Expense Line Item variant 179,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-180,699180,Miscellaneous Operating Expense Line Item variant 180,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-181,699181,Miscellaneous Operating Expense Line Item variant 181,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-182,699182,Miscellaneous Operating Expense Line Item variant 182,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-183,699183,Miscellaneous Operating Expense Line Item variant 183,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-184,699184,Miscellaneous Operating Expense Line Item variant 184,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-185,699185,Miscellaneous Operating Expense Line Item variant 185,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-186,699186,Miscellaneous Operating Expense Line Item variant 186,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-187,699187,Miscellaneous Operating Expense Line Item variant 187,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-188,699188,Miscellaneous Operating Expense Line Item variant 188,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-189,699189,Miscellaneous Operating Expense Line Item variant 189,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-190,699190,Miscellaneous Operating Expense Line Item variant 190,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-191,699191,Miscellaneous Operating Expense Line Item variant 191,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-192,699192,Miscellaneous Operating Expense Line Item variant 192,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-193,699193,Miscellaneous Operating Expense Line Item variant 193,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-194,699194,Miscellaneous Operating Expense Line Item variant 194,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-195,699195,Miscellaneous Operating Expense Line Item variant 195,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-196,699196,Miscellaneous Operating Expense Line Item variant 196,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-197,699197,Miscellaneous Operating Expense Line Item variant 197,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-198,699198,Miscellaneous Operating Expense Line Item variant 198,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-199,699199,Miscellaneous Operating Expense Line Item variant 199,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-200,699200,Miscellaneous Operating Expense Line Item variant 200,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-201,699201,Miscellaneous Operating Expense Line Item variant 201,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-202,699202,Miscellaneous Operating Expense Line Item variant 202,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-203,699203,Miscellaneous Operating Expense Line Item variant 203,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-204,699204,Miscellaneous Operating Expense Line Item variant 204,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-205,699205,Miscellaneous Operating Expense Line Item variant 205,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-206,699206,Miscellaneous Operating Expense Line Item variant 206,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-207,699207,Miscellaneous Operating Expense Line Item variant 207,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-208,699208,Miscellaneous Operating Expense Line Item variant 208,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-209,699209,Miscellaneous Operating Expense Line Item variant 209,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-210,699210,Miscellaneous Operating Expense Line Item variant 210,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-211,699211,Miscellaneous Operating Expense Line Item variant 211,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-212,699212,Miscellaneous Operating Expense Line Item variant 212,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-213,699213,Miscellaneous Operating Expense Line Item variant 213,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-214,699214,Miscellaneous Operating Expense Line Item variant 214,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-215,699215,Miscellaneous Operating Expense Line Item variant 215,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-216,699216,Miscellaneous Operating Expense Line Item variant 216,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-217,699217,Miscellaneous Operating Expense Line Item variant 217,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-218,699218,Miscellaneous Operating Expense Line Item variant 218,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-219,699219,Miscellaneous Operating Expense Line Item variant 219,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-220,699220,Miscellaneous Operating Expense Line Item variant 220,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-221,699221,Miscellaneous Operating Expense Line Item variant 221,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-222,699222,Miscellaneous Operating Expense Line Item variant 222,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-223,699223,Miscellaneous Operating Expense Line Item variant 223,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-224,699224,Miscellaneous Operating Expense Line Item variant 224,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-225,699225,Miscellaneous Operating Expense Line Item variant 225,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-226,699226,Miscellaneous Operating Expense Line Item variant 226,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-227,699227,Miscellaneous Operating Expense Line Item variant 227,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-228,699228,Miscellaneous Operating Expense Line Item variant 228,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-229,699229,Miscellaneous Operating Expense Line Item variant 229,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-230,699230,Miscellaneous Operating Expense Line Item variant 230,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-231,699231,Miscellaneous Operating Expense Line Item variant 231,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-232,699232,Miscellaneous Operating Expense Line Item variant 232,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-233,699233,Miscellaneous Operating Expense Line Item variant 233,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-234,699234,Miscellaneous Operating Expense Line Item variant 234,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-235,699235,Miscellaneous Operating Expense Line Item variant 235,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-236,699236,Miscellaneous Operating Expense Line Item variant 236,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-237,699237,Miscellaneous Operating Expense Line Item variant 237,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-238,699238,Miscellaneous Operating Expense Line Item variant 238,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-239,699239,Miscellaneous Operating Expense Line Item variant 239,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-240,699240,Miscellaneous Operating Expense Line Item variant 240,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-241,699241,Miscellaneous Operating Expense Line Item variant 241,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-242,699242,Miscellaneous Operating Expense Line Item variant 242,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-243,699243,Miscellaneous Operating Expense Line Item variant 243,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-244,699244,Miscellaneous Operating Expense Line Item variant 244,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-245,699245,Miscellaneous Operating Expense Line Item variant 245,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-246,699246,Miscellaneous Operating Expense Line Item variant 246,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-247,699247,Miscellaneous Operating Expense Line Item variant 247,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-248,699248,Miscellaneous Operating Expense Line Item variant 248,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+6999-EXT-249,699249,Miscellaneous Operating Expense Line Item variant 249,Expenses,Operating Expenses,Other Operating Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+7010-US,701001,Interest Income on Bank Accounts (United States),Revenue,Non-Operating Income,Financial Income,United States,Finance & Legal,Operating,Customer receipts and revenue activity,Credit
+7010-CA,701002,Interest Income on Bank Accounts (Canada),Revenue,Non-Operating Income,Financial Income,Canada,Finance & Legal,Operating,Customer receipts and revenue activity,Credit
+7010-UK,701003,Interest Income on Bank Accounts (United Kingdom),Revenue,Non-Operating Income,Financial Income,United Kingdom,Finance & Legal,Operating,Customer receipts and revenue activity,Credit
+7010-EU,701004,Interest Income on Bank Accounts (Europe (Eurozone)),Revenue,Non-Operating Income,Financial Income,Europe (Eurozone),Finance & Legal,Operating,Customer receipts and revenue activity,Credit
+7010-APAC,701005,Interest Income on Bank Accounts (Asia Pacific),Revenue,Non-Operating Income,Financial Income,Asia Pacific,Finance & Legal,Operating,Customer receipts and revenue activity,Credit
+7020-GEN,702000,Gain/Loss on Sale of Fixed Assets,Revenue,Non-Operating Income,Other Income,Global,Corporate/HQ,Operating,Customer receipts and revenue activity,Credit
+7510-GEN,751000,Interest Expense on Bank Loans,Expenses,Non-Operating Expenses,Financial Expenses,Global,Corporate/HQ,Financing,Interest paid or received,Debit
+7520-GEN,752000,Foreign Exchange Gain/Loss,Expenses,Non-Operating Expenses,Financial Expenses,Global,Corporate/HQ,Operating,Operating supplier payments,Debit
+7810-GEN,781000,Corporate Income Tax Expense,Expenses,Tax Expense,Income Taxes,Global,Corporate/HQ,Operating,Tax payments and accruals,Debit
