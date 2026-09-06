@@ -1230,6 +1230,32 @@ function uploadPicker(kind, label) {
     </label>`;
 }
 
+const examples = {
+  "sample-1": {
+    label: "Load Example Dataset 1",
+    meta: "Two-year SaaS growth",
+    accounts: "./sample-data/01-two-year-saas-growth/ChartOfAccounts.csv",
+    transactions: "./sample-data/01-two-year-saas-growth/Transactions.csv"
+  },
+  "sample-2": {
+    label: "Load Example Dataset 2",
+    meta: "Three-year expansion",
+    accounts: "./sample-data/02-three-year-expansion-cycle/ChartOfAccounts.csv",
+    transactions: "./sample-data/02-three-year-expansion-cycle/Transactions.csv"
+  }
+};
+
+function exampleButtons() {
+  return `<div class="example-actions">
+    ${Object.entries(examples)
+      .map(
+        ([id, item]) =>
+          `<button class="example-btn ${id === "sample-1" ? "example-one" : "example-two"}" data-load-example="${id}"><strong>${escapeHtml(item.label)}</strong><span>${escapeHtml(item.meta)}</span></button>`
+      )
+      .join("")}
+  </div>`;
+}
+
 function periodControls() {
   if (!state.dataLoaded) return "";
   ensureReportingPeriod();
@@ -1293,6 +1319,7 @@ function header() {
         ${uploadPicker("transactions", "Transactions CSV")}
         <button class="download-button" data-refresh-from-upload>Generate report</button>
         <button class="download-button secondary" data-export-report-data>Download report file</button>
+        ${exampleButtons()}
       </section>
     </header>`;
 }
@@ -1835,7 +1862,7 @@ function emptyState() {
   return `<main>
     <section class="empty-report">
       <strong>Upload CSVs to generate the financial statements</strong>
-      <p>No report data is loaded yet. Select your chart of accounts and transactions CSV files to generate the dashboard.</p>
+      <p>No report data is loaded yet. Select your chart of accounts and transactions CSV files, or use one of the example datasets to explore the dashboard.</p>
       ${state.uploadError ? `<p class="upload-error">${escapeHtml(state.uploadError)}</p>` : ""}
       ${state.uploadNotice ? `<p class="upload-notice">${escapeHtml(state.uploadNotice)}</p>` : ""}
       <div class="empty-upload-grid">
@@ -1844,10 +1871,11 @@ function emptyState() {
       </div>
       <div class="empty-actions">
         <button class="download-button" data-refresh-from-upload>Generate report</button>
+        ${exampleButtons()}
       </div>
       <div class="empty-steps">
         <div><span>1</span><p>Choose the Chart of Accounts CSV and Transactions CSV in either order.</p></div>
-        <div><span>2</span><p>Generate the report in the browser after both files are selected.</p></div>
+        <div><span>2</span><p>Use either example dataset to test multi-period comparative reporting.</p></div>
         <div><span>3</span><p>Generate the report. Uploaded data is processed only on this page.</p></div>
       </div>
     </section>
@@ -2010,6 +2038,39 @@ async function refreshFromUpload() {
   }
 }
 
+async function loadExample(id) {
+  try {
+    const example = examples[id];
+    if (!example) throw new Error("Example dataset was not found.");
+    state.uploadError = "";
+    state.uploadNotice = "";
+    const [accountsRaw, transactionsRaw] = await Promise.all(
+      [example.accounts, example.transactions].map((file) =>
+        fetch(file, { cache: "no-store" }).then((response) => {
+          if (!response.ok) throw new Error(`Could not load ${file}.`);
+          return response.text();
+        })
+      )
+    );
+    state.uploadedFiles = {
+      accountsRaw,
+      accountsName: example.accounts.replace("./", ""),
+      transactionsRaw,
+      transactionsName: example.transactions.replace("./", "")
+    };
+    const reportData = buildReportDataFromCsv(accountsRaw, transactionsRaw);
+    loadReportData(reportData);
+    resetViewState();
+    ensureReportingPeriod();
+    state.uploadOpen = false;
+    render();
+  } catch (error) {
+    state.uploadError = error.message;
+    state.uploadOpen = true;
+    render();
+  }
+}
+
 function downloadRows(rows, filename) {
   const headers = ["Date", "ReportRowID", "AccountNumber", "AccountName", "Category", "ActivitySummary", "Amount"];
   const csv = [
@@ -2120,6 +2181,9 @@ function bindEvents() {
     } else {
       focusUploadPanel(false);
     }
+  });
+  document.querySelectorAll("[data-load-example]").forEach((button) => {
+    button.addEventListener("click", () => loadExample(button.dataset.loadExample));
   });
   document.querySelectorAll("[data-coa-file]").forEach((input) => input.addEventListener("change", async (event) => {
     try {
